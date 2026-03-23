@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — Isabella Stryker</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .case-studies-page {
+    padding-top: 100px;
+    background: var(--warm-cream);
+  }
+
+  .case-studies-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 40px;
+  }
+
+  .case-study-detail {
+    margin-bottom: 120px;
+    padding: 60px 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  }
+
+  .case-study-detail:last-child {
+    margin-bottom: 0;
+  }
+
+  .cs-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .cs-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 600;
+    color: var(--deep-black);
+    margin-bottom: 32px;
+  }
+
+  .cs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .cs-challenge, .cs-strategy, .cs-results {
+    margin-bottom: 24px;
+  }
+
+  .cs-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cognac);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .cs-content {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-med);
+  }
+
+  .cs-cta {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 14px 36px;
+    border: 1px solid var(--cognac);
+    background: transparent;
+    color: var(--cognac);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .cs-cta:hover {
+    background: var(--cognac);
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .cs-grid {
+      grid-template-columns: 1fr;
+    }
+    .cs-name {
+      font-size: 32px;
+    }
+  }
+</style>
+</head>
+<body class="site-active">
+  <!-- Sticky Header Navigation -->
+  <header class="sticky-header" id="stickyHeader">
+    <a href="/" class="header-logo">Isabella Stryker</a>
+    <nav class="header-nav">
+      <a href="/home.html" class="nav-link" data-page="home">Home</a>
+      <a href="/case-studies.html" class="nav-link active" data-page="case-studies">Case Studies</a>
+      <a href="/home.html#contact" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <div class="case-studies-page">
+    <div class="case-studies-inner">
+      <span class="section-label">The Work</span>
+      <h1 class="section-title">Case Studies</h1>
+
+      <!-- Case Study 1: House of Arella -->
+      <div class="case-study-detail">
+        <span class="cs-tag">Full-Scope Partnership</span>
+        <h2 class="cs-name">House of Arella</h2>
+
+        <div class="cs-grid">
+          <div>
+            <div class="cs-challenge">
+              <span class="cs-label">The Challenge</span>
+              <p class="cs-content">The brand needed cohesion across its entire marketing ecosystem — website, social media, packaging, and brand materials were disconnected and didn't reflect the luxury positioning the founder envisioned.</p>
+            </div>
+            <div class="cs-strategy">
+              <span class="cs-label">The Strategy</span>
+              <p class="cs-content">Conducting a full deep dive into all marketing materials to prioritize cohesion across the business. This includes a complete website update and platform migration to Shopify, a branding and packaging materials review, building a content workflow for ongoing social media management, and delivering foundational strategy documents.</p>
+            </div>
+          </div>
+          <div>
+            <div class="cs-results">
+              <span class="cs-label">The Results</span>
+              <p class="cs-content">
+                • Unified brand identity across all touchpoints<br>
+                • Website redesign on modern e-commerce platform<br>
+                • Streamlined content production workflow<br>
+                • Clear positioning and messaging framework<br>
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="cs-cta" onclick="window.location.href='/home.html#contact'">Discuss Your Project</button>
+      </div>
+
+      <!-- Case Study 2: SMU LOOK -->
+      <div class="case-study-detail">
+        <span class="cs-tag">Editorial &middot; Automation</span>
+        <h2 class="cs-name">SMU LOOK</h2>
+
+        <div class="cs-grid">
+          <div>
+            <div class="cs-challenge">
+              <span class="cs-label">The Challenge</span>
+              <p class="cs-content">The publication needed consistent content output and a streamlined editorial workflow that could scale without adding team members.</p>
+            </div>
+            <div class="cs-strategy">
+              <span class="cs-label">The Strategy</span>
+              <p class="cs-content">Wrote editorial pieces while building automated workflows for content scheduling, distribution, and team coordination. This bridged creative content direction with operational efficiency.</p>
+            </div>
+          </div>
+          <div>
+            <div class="cs-results">
+              <span class="cs-label">The Results</span>
+              <p class="cs-content">
+                • Consistent editorial publication schedule<br>
+                • Reduced production time by 40%<br>
+                • Improved team coordination<br>
+                • Higher quality editorial standards<br>
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="cs-cta" onclick="window.location.href='/home.html#contact'">Discuss Your Project</button>
+      </div>
+
+      <!-- Case Study 3: Sai Sankoh -->
+      <div class="case-study-detail">
+        <span class="cs-tag">Operations &middot; Systems</span>
+        <h2 class="cs-name">Sai Sankoh</h2>
+
+        <div class="cs-grid">
+          <div>
+            <div class="cs-challenge">
+              <span class="cs-label">The Challenge</span>
+              <p class="cs-content">The founder was handling everything manually — marketing, operations, and client communication were disconnected and unsustainable as the business scaled.</p>
+            </div>
+            <div class="cs-strategy">
+              <span class="cs-label">The Strategy</span>
+              <p class="cs-content">Built integrated workflow automations connecting marketing campaigns to operational processes. This freed the founder to focus on design and product while systems managed the operational overhead.</p>
+            </div>
+          </div>
+          <div>
+            <div class="cs-results">
+              <span class="cs-label">The Results</span>
+              <p class="cs-content">
+                • 20+ hours saved per week<br>
+                • Improved customer communication<br>
+                • Scalable operational processes<br>
+                • Founder focused on core business<br>
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="cs-cta" onclick="window.location.href='/home.html#contact'">Discuss Your Project</button>
+      </div>
+
+      <!-- Case Study 4: ReSupply -->
+      <div class="case-study-detail">
+        <span class="cs-tag">SEO &middot; Content</span>
+        <h2 class="cs-name">ReSupply</h2>
+
+        <div class="cs-grid">
+          <div>
+            <div class="cs-challenge">
+              <span class="cs-label">The Challenge</span>
+              <p class="cs-content">A tech/corporate company needed to build organic search presence and establish thought leadership in their space without relying solely on paid advertising.</p>
+            </div>
+            <div class="cs-strategy">
+              <span class="cs-label">The Strategy</span>
+              <p class="cs-content">Developed comprehensive keyword strategy, wrote long-form SEO-optimized blog posts, and tracked performance metrics to continuously improve rankings and organic reach.</p>
+            </div>
+          </div>
+          <div>
+            <div class="cs-results">
+              <span class="cs-label">The Results</span>
+              <p class="cs-content">
+                • 150% increase in organic traffic<br>
+                • 20+ target keywords ranking page 1<br>
+                • 35 qualified leads generated<br>
+                • Established thought leadership<br>
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="cs-cta" onclick="window.location.href='/home.html#contact'">Discuss Your Project</button>
+      </div>
+
+      <!-- Back to Home -->
+      <div style="text-align: center; padding: 60px 0;">
+        <a href="/home.html" class="contact-btn" style="display: inline-block;">Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="nav.js"></script>
+</body>
+</html>

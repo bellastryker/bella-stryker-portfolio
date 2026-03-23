@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isabella Stryker — Creative Marketing & Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --deep-black: #1A1A1A;
+    --cognac: #8B5E3C;
+    --warm-cream: #F7F3EE;
+    --olive: #6B7C5E;
+    --dusty-rose: #BD2645;
+    --gold: #C9A373;
+    --mauve: #9C7B8E;
+    --text-dark: #1A1A1A;
+    --text-med: #4A4A4A;
+    --text-light: #7A7A7A;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #E8E0D6;
+    color: var(--text-dark);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  body.site-active {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* ============================================
+     PHASE 1: THE CLOSED BOOK (LANDING)
+     ============================================ */
+  #book-landing {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #E8E0D6 0%, #D6CEC4 50%, #C9C0B4 100%);
+    z-index: 1000;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  #book-landing.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.05);
+  }
+
+  .book-scene {
+    perspective: 1200px;
+    cursor: pointer;
+  }
+
+  .book-container {
+    width: 380px;
+    height: 520px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateY(-5deg) rotateX(2deg);
+    transition: transform 0.3s ease;
+  }
+
+  .book-scene:hover .book-container {
+    transform: rotateY(-8deg) rotateX(3deg);
+  }
+
+  .book-container::before {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 10%;
+    width: 80%;
+    height: 40px;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.25) 0%, transparent 70%);
+    filter: blur(10px);
+  }
+
+  .book-cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 2px 8px 8px 2px;
+    transform-origin: left center;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    z-index: 2;
+  }
+
+  .book-cover-front {
+    background: linear-gradient(135deg, #F0E8E0 0%, #E8DDD3 50%, #DDD2C6 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,0.05),
+      inset -3px 0 8px rgba(0,0,0,0.05),
+      4px 4px 20px rgba(0,0,0,0.15),
+      8px 8px 40px rgba(0,0,0,0.1);
+    background-image:
+      linear-gradient(135deg, #F0E8E0 0%, #E8DDD3 50%, #DDD2C6 100%),
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 2px, rgba(0,0,0,0.015) 4px),
+      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.01) 2px, rgba(0,0,0,0.01) 4px);
+  }
+
+  .book-cover-front .cover-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+  }
+
+  .book-cover-front .cover-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 600;
+    color: var(--deep-black);
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .book-cover-front .cover-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    text-align: center;
+  }
+
+  .book-cover-front .cover-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 24px 0;
+  }
+
+  .book-spine {
+    position: absolute;
+    left: -24px;
+    top: 0;
+    width: 24px;
+    height: 100%;
+    background: linear-gradient(90deg, #C4B8AA, #D6CABc, #C4B8AA);
+    transform: rotateY(-90deg);
+    transform-origin: right center;
+    border-radius: 2px 0 0 2px;
+    box-shadow: inset -2px 0 4px rgba(0,0,0,0.1);
+  }
+
+  .book-pages-edge {
+    position: absolute;
+    right: -4px;
+    top: 8px;
+    width: 4px;
+    height: calc(100% - 16px);
+    background: repeating-linear-gradient(
+      180deg,
+      #F5F0EB 0px,
+      #F5F0EB 1px,
+      #E8E0D6 1px,
+      #E8E0D6 2px
+    );
+    border-radius: 0 1px 1px 0;
+  }
+
+  .book-cover.opening {
+    transform: rotateY(-160deg);
+  }
+
+  .open-prompt {
+    margin-top: 48px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+  }
+
+  /* ============================================
+     STICKY HEADER NAVIGATION
+     ============================================ */
+  .sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: rgba(247, 243, 238, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201, 163, 115, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease 0.8s;
+  }
+
+  .sticky-header.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .header-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--deep-black);
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .header-nav a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-med);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    cursor: pointer;
+  }
+
+  .header-nav a:hover {
+    color: var(--cognac);
+  }
+
+  .header-nav a.active {
+    color: var(--cognac);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .sticky-header {
+      padding: 0 20px;
+    }
+    .header-nav {
+      gap: 20px;
+    }
+    .header-nav a {
+      font-size: 11px;
+    }
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+  <!-- Sticky Header Navigation -->
+  <header class="sticky-header" id="stickyHeader">
+    <a href="/" class="header-logo">Isabella Stryker</a>
+    <nav class="header-nav">
+      <a href="/" class="nav-link active" data-page="home">Home</a>
+      <a href="/case-studies" class="nav-link" data-page="case-studies">Case Studies</a>
+      <a href="#contact" class="nav-link" onclick="navigateToSection()">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Landing Page: Closed Book -->
+  <div id="book-landing">
+    <div class="book-scene" id="bookScene">
+      <div class="book-container">
+        <div class="book-spine"></div>
+        <div class="book-pages-edge"></div>
+        <div class="book-cover book-cover-front" id="bookCover">
+          <span class="cover-label">Portfolio</span>
+          <span class="cover-name">Isabella<br>Stryker</span>
+          <div class="cover-line"></div>
+          <span class="cover-subtitle">Marketing &middot; Strategy &middot; Systems</span>
+        </div>
+      </div>
+    </div>
+    <div class="open-prompt">Open Portfolio</div>
+  </div>
+
+  <script>
+    // Handle book opening
+    const bookScene = document.getElementById('bookScene');
+    const bookCover = document.getElementById('bookCover');
+    const bookLanding = document.getElementById('book-landing');
+    const stickyHeader = document.getElementById('stickyHeader');
+
+    bookScene.addEventListener('click', () => {
+      bookCover.classList.add('opening');
+      setTimeout(() => {
+        bookLanding.classList.add('hidden');
+        stickyHeader.classList.add('visible');
+        document.body.classList.add('site-active');
+        // Load home page
+        window.location.href = '/home.html';
+      }, 1200);
+    });
+
+    // Navigation
+    function navigateToSection() {
+      window.location.href = '/home.html#contact';
+    }
+  </script>
+</body>
+</html>
