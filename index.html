@@ -3,329 +3,554 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isabella Stryker — Creative Marketing & Strategy</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Isabella Stryker — Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
   :root {
-    --deep-black: #1A1A1A;
-    --cognac: #8B5E3C;
+    --burgundy: #581317;
+    --blush: #e5c8cc;
     --warm-cream: #F7F3EE;
-    --olive: #6B7C5E;
-    --dusty-rose: #BD2645;
     --gold: #C9A373;
-    --mauve: #9C7B8E;
-    --text-dark: #1A1A1A;
-    --text-med: #4A4A4A;
-    --text-light: #7A7A7A;
   }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: #E8E0D6;
-    color: var(--text-dark);
+  html, body {
+    width: 100%; height: 100%;
     overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-  }
-
-  body.site-active {
-    overflow-y: auto;
-    overflow-x: hidden;
+    background: var(--warm-cream);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* ============================================
-     PHASE 1: THE CLOSED BOOK (LANDING)
+     LANDING SCENE
      ============================================ */
-  #book-landing {
-    position: fixed;
-    inset: 0;
+  #landing {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(160deg, #E8E0D6 0%, #D6CEC4 50%, #C9C0B4 100%);
-    z-index: 1000;
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    position: relative;
+    background: var(--warm-cream);
+    transition: opacity 0.6s ease;
   }
 
-  #book-landing.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: scale(1.05);
+  .landing-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(11px, 1.2vw, 14px);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    opacity: 0.65;
+    margin-bottom: 52px;
   }
 
+  /* ============================================
+     BOOK SCENE
+     ============================================ */
   .book-scene {
-    perspective: 1200px;
+    perspective: 1400px;
+    width: 280px;
+    height: 380px;
+    position: relative;
     cursor: pointer;
   }
 
-  .book-container {
-    width: 380px;
-    height: 520px;
-    position: relative;
-    transform-style: preserve-3d;
-    transform: rotateY(-5deg) rotateX(2deg);
-    transition: transform 0.3s ease;
-  }
-
-  .book-scene:hover .book-container {
-    transform: rotateY(-8deg) rotateX(3deg);
-  }
-
-  .book-container::before {
-    content: '';
-    position: absolute;
-    bottom: -30px;
-    left: 10%;
-    width: 80%;
-    height: 40px;
-    background: radial-gradient(ellipse, rgba(0,0,0,0.25) 0%, transparent 70%);
-    filter: blur(10px);
-  }
-
-  .book-cover {
+  /* The full book wrapper — rotates to reveal open state */
+  .book-wrapper {
     width: 100%;
     height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    border-radius: 2px 8px 8px 2px;
-    transform-origin: left center;
-    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1.000);
-    z-index: 2;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.05s linear;
   }
 
-  .book-cover-front {
-    background: linear-gradient(135deg, #F0E8E0 0%, #E8DDD3 50%, #DDD2C6 100%);
+  /* ---- CLOSED BOOK ---- */
+  .book-closed {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Book cover — front face */
+  .book-front {
+    position: absolute;
+    inset: 0;
+    border-radius: 3px 12px 12px 3px;
+    overflow: hidden;
+    box-shadow:
+      -4px 6px 20px rgba(88,19,23,0.25),
+      4px 8px 40px rgba(0,0,0,0.18),
+      inset -3px 0 8px rgba(0,0,0,0.12);
+    background: var(--burgundy);
+  }
+
+  .book-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* CSS fallback cover (shows when no image) */
+  .book-front-css {
+    width: 100%;
+    height: 100%;
+    background: var(--blush);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 60px 40px;
-    box-shadow:
-      inset 0 0 0 1px rgba(0,0,0,0.05),
-      inset -3px 0 8px rgba(0,0,0,0.05),
-      4px 4px 20px rgba(0,0,0,0.15),
-      8px 8px 40px rgba(0,0,0,0.1);
-    background-image:
-      linear-gradient(135deg, #F0E8E0 0%, #E8DDD3 50%, #DDD2C6 100%),
-      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.015) 2px, rgba(0,0,0,0.015) 4px),
-      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.01) 2px, rgba(0,0,0,0.01) 4px);
+    gap: 12px;
+    padding: 32px;
   }
 
-  .book-cover-front .cover-label {
+  .book-front-css .bs-author {
     font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
+    font-size: 9px;
+    letter-spacing: 5px;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 40px;
+    color: var(--burgundy);
+    margin-bottom: 8px;
   }
 
-  .book-cover-front .cover-name {
+  .book-front-css .bs-initials {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 52px;
-    font-weight: 600;
-    color: var(--deep-black);
+    font-size: 88px;
+    font-weight: 700;
+    color: var(--burgundy);
+    line-height: 1;
+    letter-spacing: -3px;
+  }
+
+  .book-front-css .book-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--burgundy);
     text-align: center;
-    line-height: 1.1;
-    margin-bottom: 16px;
+    margin-top: 4px;
   }
 
-  .book-cover-front .cover-subtitle {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-light);
+  .book-front-css .book-script {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--burgundy);
+    opacity: 0.65;
     text-align: center;
+    margin-top: 32px;
   }
 
-  .book-cover-front .cover-line {
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-    margin: 24px 0;
-  }
-
+  /* Book spine */
   .book-spine {
     position: absolute;
-    left: -24px;
-    top: 0;
-    width: 24px;
+    top: 0; left: -18px;
+    width: 18px;
     height: 100%;
-    background: linear-gradient(90deg, #C4B8AA, #D6CABc, #C4B8AA);
+    background: linear-gradient(90deg, #c9aeb3, #d4b8bc);
+    border-radius: 3px 0 0 3px;
+    box-shadow: -3px 4px 12px rgba(0,0,0,0.2);
     transform: rotateY(-90deg);
     transform-origin: right center;
-    border-radius: 2px 0 0 2px;
-    box-shadow: inset -2px 0 4px rgba(0,0,0,0.1);
   }
 
+  /* Book pages (right edge) */
   .book-pages-edge {
     position: absolute;
-    right: -4px;
-    top: 8px;
-    width: 4px;
-    height: calc(100% - 16px);
+    top: 2px; right: -6px;
+    width: 8px;
+    height: calc(100% - 4px);
     background: repeating-linear-gradient(
-      180deg,
-      #F5F0EB 0px,
-      #F5F0EB 1px,
-      #E8E0D6 1px,
-      #E8E0D6 2px
+      to bottom,
+      #f0ebe4 0px, #f0ebe4 2px,
+      #e8e2db 2px, #e8e2db 3px
     );
-    border-radius: 0 1px 1px 0;
+    border-radius: 0 2px 2px 0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
   }
 
-  .book-cover.opening {
-    transform: rotateY(-160deg);
+  /* ---- OPEN BOOK ---- */
+  .book-open {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform-style: preserve-3d;
+    width: 560px; /* twice the width — open book is wider */
+    left: -140px; /* center it */
+    transition: opacity 0.4s ease;
+    display: flex;
   }
 
-  .open-prompt {
-    margin-top: 48px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.7;
-    animation: pulse 2s ease-in-out infinite;
+  .book-page-left,
+  .book-page-right {
+    width: 50%;
+    height: 100%;
+    background: #f7f3ee;
+    position: relative;
+    overflow: hidden;
   }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.9; }
+  .book-page-left {
+    border-radius: 3px 0 0 3px;
+    box-shadow: -4px 8px 32px rgba(0,0,0,0.15);
+    background: linear-gradient(to right, #ede8e1, #f7f3ee);
+  }
+
+  .book-page-right {
+    border-radius: 0 3px 3px 0;
+    box-shadow: 4px 8px 32px rgba(0,0,0,0.15);
+    background: linear-gradient(to left, #ede8e1, #f7f3ee);
+  }
+
+  /* Printed page content — miniature site preview */
+  .page-content {
+    padding: 28px 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-mini-header {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--burgundy);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .page-mini-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--blush);
+    margin-bottom: 12px;
+  }
+
+  .page-mini-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+
+  .page-mini-line {
+    height: 2px;
+    background: #d6cfc7;
+    border-radius: 1px;
+  }
+
+  .page-mini-line.short { width: 70%; }
+  .page-mini-line.shorter { width: 50%; }
+  .page-mini-line.medium { width: 85%; }
+
+  .page-mini-accent {
+    width: 40px;
+    height: 5px;
+    background: var(--blush);
+    border-radius: 2px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+  }
+
+  /* Book spine center crease */
+  .book-open-spine {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.08), rgba(0,0,0,0.04), rgba(0,0,0,0.08));
+    z-index: 2;
   }
 
   /* ============================================
-     STICKY HEADER NAVIGATION
+     HOVER HINT
      ============================================ */
-  .sticky-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 70px;
-    background: rgba(247, 243, 238, 0.7);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(201, 163, 115, 0.2);
+  .click-hint {
+    margin-top: 44px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    z-index: 999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease 0.8s;
+    gap: 8px;
+    transition: opacity 0.4s ease;
   }
 
-  .sticky-header.visible {
+  .click-hint span {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    opacity: 0.5;
+  }
+
+  .hint-line {
+    width: 1px;
+    height: 32px;
+    background: var(--burgundy);
+    opacity: 0.25;
+    animation: hintPulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes hintPulse {
+    0%, 100% { opacity: 0.15; transform: scaleY(0.6); }
+    50%       { opacity: 0.35; transform: scaleY(1); }
+  }
+
+  /* ============================================
+     ANIMATION STATES
+     ============================================ */
+
+  /* State 1: Idle hover tilt */
+  .book-scene:hover .book-wrapper {
+    transform: rotateY(-8deg) rotateX(3deg);
+  }
+
+  /* State 2: Opening — front cover swings left */
+  .book-scene.opening .book-closed {
+    animation: openCover 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes openCover {
+    0%   { transform: rotateY(0deg); opacity: 1; }
+    70%  { transform: rotateY(-165deg); opacity: 1; }
+    100% { transform: rotateY(-180deg); opacity: 0; }
+  }
+
+  /* State 2: Open pages fade in */
+  .book-scene.opening .book-open {
+    animation: revealOpen 0.9s 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes revealOpen {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  /* State 3: Zoom into book */
+  .book-scene.zooming {
+    animation: zoomIn 1.1s cubic-bezier(0.4, 0, 0.8, 1) forwards;
+  }
+
+  @keyframes zoomIn {
+    0%   { transform: scale(1); opacity: 1; }
+    60%  { transform: scale(3.5); opacity: 1; }
+    100% { transform: scale(7); opacity: 0; }
+  }
+
+  /* Hide hint during animation */
+  .book-scene.opening ~ .click-hint,
+  .book-scene.zooming ~ .click-hint {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Full-page portal overlay */
+  #portal-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--warm-cream);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+  }
+
+  #portal-overlay.active {
     opacity: 1;
     pointer-events: all;
   }
 
-  .header-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--deep-black);
-    text-decoration: none;
-    letter-spacing: 1px;
+  /* ============================================
+     ENTRANCE ANIMATION — page load
+     ============================================ */
+  #landing {
+    opacity: 0;
+    animation: fadeInLanding 1s 0.3s ease forwards;
   }
 
-  .header-nav {
-    display: flex;
-    gap: 40px;
-    align-items: center;
+  @keyframes fadeInLanding {
+    to { opacity: 1; }
   }
 
-  .header-nav a {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-med);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    cursor: pointer;
+  .book-scene {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: riseBook 1s 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
-  .header-nav a:hover {
-    color: var(--cognac);
-  }
-
-  .header-nav a.active {
-    color: var(--cognac);
-    font-weight: 600;
-  }
-
-  @media (max-width: 768px) {
-    .sticky-header {
-      padding: 0 20px;
-    }
-    .header-nav {
-      gap: 20px;
-    }
-    .header-nav a {
-      font-size: 11px;
-    }
-  }
-
-  @keyframes fadeUp {
+  @keyframes riseBook {
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  .click-hint {
+    opacity: 0;
+    animation: fadeInHint 0.8s 1.4s ease forwards;
+  }
+
+  @keyframes fadeInHint {
+    to { opacity: 1; }
+  }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 600px) {
+    .book-scene {
+      width: 220px;
+      height: 300px;
+    }
+
+    .book-open {
+      width: 440px;
+      left: -110px;
+    }
   }
 </style>
 </head>
 <body>
-  <!-- Sticky Header Navigation -->
-  <header class="sticky-header" id="stickyHeader">
-    <a href="/" class="header-logo">Isabella Stryker</a>
-    <nav class="header-nav">
-      <a href="/" class="nav-link active" data-page="home">Home</a>
-      <a href="/case-studies" class="nav-link" data-page="case-studies">Case Studies</a>
-      <a href="#contact" class="nav-link" onclick="navigateToSection()">Contact</a>
-    </nav>
-  </header>
 
-  <!-- Landing Page: Closed Book -->
-  <div id="book-landing">
-    <div class="book-scene" id="bookScene">
-      <div class="book-container">
+<div id="portal-overlay"></div>
+
+<div id="landing">
+  <p class="landing-name">Isabella Stryker</p>
+
+  <div class="book-scene" id="bookScene" onclick="handleBookClick()">
+    <div class="book-wrapper" id="bookWrapper">
+
+      <!-- CLOSED BOOK -->
+      <div class="book-closed" id="bookClosed">
         <div class="book-spine"></div>
+        <div class="book-front">
+          <!-- If bs-book.jpg exists, it will show. Otherwise CSS fallback shows. -->
+          <img
+            src="images/bs-book.jpg"
+            alt="BS Marketing Portfolio"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="book-front-css" style="display:none;">
+            <span class="bs-author">Bella Stryker</span>
+            <span class="bs-initials">BS</span>
+            <span class="book-subtitle">Marketing Portfolio</span>
+            <span class="book-script">Where strategy meets story.</span>
+          </div>
+        </div>
         <div class="book-pages-edge"></div>
-        <div class="book-cover book-cover-front" id="bookCover">
-          <span class="cover-label">Portfolio</span>
-          <span class="cover-name">Isabella<br>Stryker</span>
-          <div class="cover-line"></div>
-          <span class="cover-subtitle">Marketing &middot; Strategy &middot; Systems</span>
+      </div>
+
+      <!-- OPEN BOOK -->
+      <div class="book-open" id="bookOpen">
+        <div class="book-page-left">
+          <div class="page-content">
+            <div class="page-mini-header">Isabella Stryker</div>
+            <div class="page-mini-rule"></div>
+            <div class="page-mini-lines">
+              <div class="page-mini-accent"></div>
+              <div class="page-mini-line"></div>
+              <div class="page-mini-line short"></div>
+              <div class="page-mini-line medium"></div>
+              <div class="page-mini-line shorter"></div>
+              <div class="page-mini-line"></div>
+              <div class="page-mini-line short"></div>
+              <div class="page-mini-line medium"></div>
+              <div class="page-mini-line"></div>
+              <div class="page-mini-line shorter"></div>
+              <div class="page-mini-line"></div>
+              <div class="page-mini-line short"></div>
+            </div>
+          </div>
+        </div>
+        <div class="book-open-spine"></div>
+        <div class="book-page-right">
+          <div class="page-content">
+            <div class="page-mini-lines">
+              <div class="page-mini-accent"></div>
+              <div class="page-mini-line medium"></div>
+              <div class="page-mini-line"></div>
+              <div class="page-mini-line short"></div>
+              <div class="page-mini-line"></div>
+              <div class="page-mini-line shorter"></div>
+              <div class="page-mini-line medium"></div>
+              <div class="page-mini-line"></div>
+              <div class="page-mini-line short"></div>
+              <div class="page-mini-line"></div>
+              <div class="page-mini-line medium"></div>
+              <div class="page-mini-line shorter"></div>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
-    <div class="open-prompt">Open Portfolio</div>
   </div>
 
-  <script>
-    // Handle book opening
-    const bookScene = document.getElementById('bookScene');
-    const bookCover = document.getElementById('bookCover');
-    const bookLanding = document.getElementById('book-landing');
-    const stickyHeader = document.getElementById('stickyHeader');
+  <div class="click-hint">
+    <span>Open</span>
+    <div class="hint-line"></div>
+  </div>
+</div>
 
-    bookScene.addEventListener('click', () => {
-      bookCover.classList.add('opening');
-      setTimeout(() => {
-        bookLanding.classList.add('hidden');
-        stickyHeader.classList.add('visible');
-        document.body.classList.add('site-active');
-        // Load home page
-        window.location.href = '/home.html';
-      }, 1200);
-    });
+<script>
+  let state = 'idle'; // idle → opening → open → zooming → done
 
-    // Navigation
-    function navigateToSection() {
-      window.location.href = '/home.html#contact';
+  function handleBookClick() {
+    if (state !== 'idle' && state !== 'open') return;
+
+    if (state === 'idle') {
+      openBook();
+    } else if (state === 'open') {
+      enterBook();
     }
-  </script>
+  }
+
+  function openBook() {
+    state = 'opening';
+    const scene = document.getElementById('bookScene');
+    const wrapper = document.getElementById('bookWrapper');
+
+    // Remove hover effect during animation
+    wrapper.style.transform = 'none';
+    wrapper.style.transition = 'none';
+
+    scene.classList.add('opening');
+
+    // After open animation completes, set state to open
+    setTimeout(() => {
+      state = 'open';
+      // Small nudge to indicate clickable again
+      scene.style.cursor = 'zoom-in';
+    }, 1200);
+  }
+
+  function enterBook() {
+    state = 'zooming';
+    const scene = document.getElementById('bookScene');
+
+    scene.classList.remove('opening');
+    scene.classList.add('zooming');
+
+    // Fade in portal overlay slightly before zoom completes
+    setTimeout(() => {
+      document.getElementById('portal-overlay').classList.add('active');
+    }, 750);
+
+    // Navigate to home page
+    setTimeout(() => {
+      window.location.href = 'home.html';
+    }, 1300);
+  }
+
+  // Keyboard support
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleBookClick();
+    }
+  });
+</script>
 </body>
 </html>

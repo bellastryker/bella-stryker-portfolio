@@ -3,167 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Isabella Stryker — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Isabella Stryker — Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body class="site-active">
-  <!-- Sticky Header Navigation -->
-  <header class="sticky-header" id="stickyHeader">
-    <a href="/" class="header-logo">Isabella Stryker</a>
-    <nav class="header-nav">
-      <a href="/home.html" class="nav-link active" data-page="home">Home</a>
-      <a href="/case-studies.html" class="nav-link" data-page="case-studies">Case Studies</a>
-      <a href="#contact" class="nav-link">Contact</a>
-    </nav>
-  </header>
+<body>
 
-  <div id="magazine-site" class="visible">
-    <!-- Hero / Opening Spread -->
-    <section class="hero">
-      <span class="hero-label">Welcome</span>
-      <h1>Strategic marketing for the brands shaping culture.</h1>
+  <!-- NAVIGATION -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">IS</a>
+      <div class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#work" class="nav-link">Work</a>
+        <a href="case-studies.html" class="nav-link">Case Studies</a>
+        <a href="#contact" class="nav-link nav-cta">Get in Touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <span class="hero-label">Marketing Portfolio</span>
+      <h1 class="hero-name">Isabella Stryker</h1>
       <div class="hero-divider"></div>
-      <p class="hero-tagline">I partner with luxury and artistic founders to build marketing systems that are as intentional as the brands they serve.</p>
-      <button class="hero-cta" onclick="window.location.href='/case-studies.html'">View Case Studies</button>
+      <p class="hero-tagline">Equal parts strategist, storyteller, and student.</p>
       <div class="scroll-indicator">
         <span>Scroll</span>
         <div class="scroll-line"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Social Proof -->
-    <section class="proof-bar">
-      <span class="proof-label">Selected Clients</span>
-      <div class="proof-logos">
-        <span>House of Arella</span>
-        <span>Sai Sankoh</span>
-        <span>SMU LOOK</span>
-        <span>ReSupply</span>
-      </div>
-    </section>
-
-    <!-- Working With Me -->
-    <section class="process">
-      <div class="process-inner">
-        <span class="section-label">What to Expect</span>
-        <h2 class="section-title">Working With Me</h2>
-        <p class="process-intro">Every engagement starts with a full deep dive into your marketing ecosystem. I audit everything &mdash; website, brand materials, packaging, social presence, workflows &mdash; to identify where cohesion breaks down and where opportunity lives.</p>
-
-        <div class="process-phases">
-          <div class="phase">
-            <span class="phase-label">Phase One</span>
-            <div class="phase-content">
-              <h3>The Deep Dive</h3>
-              <ul class="phase-items">
-                <li>Full audit of all marketing materials and brand touchpoints</li>
-                <li>Identify gaps in brand cohesion across the business</li>
-                <li>Competitive landscape and positioning analysis</li>
-                <li>Strategic recommendations and priority roadmap</li>
-              </ul>
-              <div class="phase-deliverables">
-                <span>Deliverables</span>
-                <p>Brand brief document, social media metrics spreadsheet, strategic roadmap</p>
-              </div>
-            </div>
+  <!-- ABOUT — First Section -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-photo-col">
+        <div class="about-photo">
+          <!-- Add your photo here -->
+        </div>
+        <div class="about-details">
+          <div class="about-detail-item">
+            <span class="detail-label">Currently</span>
+            <span class="detail-value">Content Manager, House of Arella<br>Marketing &amp; Sales Intern, ReSupply</span>
           </div>
-
-          <div class="phase">
-            <span class="phase-label">Phase Two</span>
-            <div class="phase-content">
-              <h3>The Build-Out</h3>
-              <ul class="phase-items">
-                <li>Website update and platform migration (e.g., Shopify)</li>
-                <li>Branding and packaging materials refinement</li>
-                <li>Content workflow and social media management system</li>
-                <li>Campaign strategy and launch planning</li>
-              </ul>
-              <div class="phase-deliverables">
-                <span>Deliverables</span>
-                <p>Refreshed website, updated brand materials, content calendar, workflow automations</p>
-              </div>
-            </div>
+          <div class="about-detail-item">
+            <span class="detail-label">Education</span>
+            <span class="detail-value">SMU — BS Economics &amp; BA Fashion Media<br>May 2026</span>
           </div>
-
-          <div class="phase">
-            <span class="phase-label">Phase Three</span>
-            <div class="phase-content">
-              <h3>Ongoing Partnership</h3>
-              <ul class="phase-items">
-                <li>Social media management and content execution</li>
-                <li>Performance tracking and strategy refinement</li>
-                <li>Brand cohesion across all new materials and campaigns</li>
-                <li>Monthly reporting and strategic check-ins</li>
-              </ul>
-              <div class="phase-deliverables">
-                <span>Deliverables</span>
-                <p>Monthly performance reports, content assets, ongoing strategic guidance</p>
-              </div>
-            </div>
+          <div class="about-detail-item">
+            <span class="detail-label">Available</span>
+            <span class="detail-value">Full-time roles starting May 2026</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services">
-      <div class="services-inner">
-        <span class="section-label">Services</span>
-        <h2 class="section-title">The Offerings</h2>
-        <div class="service-item">
-          <span class="service-name">Brand Strategy</span>
-          <span class="service-tagline">Positioning that commands attention.</span>
+      <div class="about-text-col">
+        <span class="section-label">About Me</span>
+        <h2 class="about-title">Where strategy meets story.</h2>
+        <div class="about-body">
+          <p>I'm Isabella — a marketer finishing a double degree at SMU in Economics with Financial Applications and Fashion Media. The combination isn't accidental. It's how I think.</p>
+          <p>Over the past two years, I've built experience across B2B growth marketing, luxury fashion PR, and editorial media — writing campaigns, building operational systems, and producing content that actually moves numbers. A 39% email open rate at ReSupply. Press placements for luxury clients in London. 450K+ organic reach for Pi Beta Phi. I treat every brief as both a strategic problem and a creative opportunity — because to me, they're the same thing.</p>
+          <p>I use AI as part of my daily workflow — not as a shortcut, but as a tool that helps me research faster, ideate smarter, and iterate without losing quality. I'm Google Analytics certified, comfortable in Salesforce and Shopify, and just as at home in a spreadsheet as I am in a creative brief.</p>
+          <p>Currently: Content Manager at House of Arella and Marketing &amp; Sales Intern at ReSupply. Open to full-time marketing roles starting May 2026.</p>
         </div>
-        <div class="service-item">
-          <span class="service-name">Content & SEO</span>
-          <span class="service-tagline">Organic growth, editorially crafted.</span>
-        </div>
-        <div class="service-item">
-          <span class="service-name">Workflow Automation</span>
-          <span class="service-tagline">Systems that scale your vision.</span>
-        </div>
-        <div class="service-item">
-          <span class="service-name">Social Media</span>
-          <span class="service-tagline">Grids that tell your brand's story.</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="about">
-      <div class="about-inner">
-        <div class="about-photo"></div>
-        <div class="about-text">
-          <span class="section-label">Editor's Letter</span>
-          <h2 class="about-title">Nice to meet you.</h2>
-          <div class="about-body">
-            <p>I'm Isabella — a marketer who believes luxury brands deserve marketing that matches their ambition.</p>
-            <p>I sit at the intersection of creative brand storytelling and operational systems, which means I can design your Instagram grid in the morning and automate your entire marketing workflow by afternoon.</p>
-            <p>I work directly with founders because that's where the magic happens — no middlemen, no layers of approval. Just honest strategy and beautiful execution.</p>
+        <div class="about-skills">
+          <span class="skills-label">Proficiencies</span>
+          <div class="skills-grid">
+            <span>Google Analytics</span>
+            <span>Salesforce</span>
+            <span>Shopify</span>
+            <span>Adobe Creative Suite</span>
+            <span>AI Tools</span>
+            <span>WordPress</span>
+            <span>Social Media</span>
+            <span>CapCut</span>
+            <span>HTML</span>
+            <span>Microsoft Office</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
-      <div class="testimonials-inner">
-        <span class="section-label">Kind Words</span>
-        <p class="quote-text">"She understood our brand from day one. Working with Isabella felt less like hiring a marketer and more like gaining a creative partner."</p>
-        <span class="quote-author">— Client Name, Brand Name</span>
+  <!-- EXPERIENCE BAR -->
+  <section class="proof-bar">
+    <span class="proof-label">Experience At</span>
+    <div class="proof-logos">
+      <span>House of Arella</span>
+      <span>ReSupply</span>
+      <span>Sai Sankoh</span>
+      <span>ModusBPCM</span>
+      <span>SMU LOOK</span>
+    </div>
+  </section>
+
+  <!-- THE WORK -->
+  <section class="case-studies" id="work">
+    <div class="case-studies-inner">
+      <span class="section-label">The Work</span>
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="case-grid">
+
+        <div class="case-card" onclick="window.location.href='case-studies.html#resupply'">
+          <div class="case-image case-image-1">
+            <div class="case-image-inner"></div>
+            <div class="case-overlay"><span>ReSupply</span></div>
+          </div>
+          <span class="case-tag">B2B Marketing &middot; Growth</span>
+          <h3 class="case-name">ReSupply</h3>
+          <p class="case-desc">Built and launched a full-funnel B2B marketing campaign targeting realtors, achieving a 39% average email open rate and expanding into two new paid channels.</p>
+          <span class="case-arrow">View Project →</span>
+        </div>
+
+        <div class="case-card" onclick="window.location.href='case-studies.html#sai-sankoh'">
+          <div class="case-image case-image-2">
+            <div class="case-image-inner"></div>
+            <div class="case-overlay"><span>Sai Sankoh</span></div>
+          </div>
+          <span class="case-tag">Brand Strategy &middot; Operations</span>
+          <h3 class="case-name">Sai Sankoh</h3>
+          <p class="case-desc">Led a full-scale inventory overhaul via Shopify automation and developed a strategic marketing kit that aligned advertising with inventory trends.</p>
+          <span class="case-arrow">View Project →</span>
+        </div>
+
+        <div class="case-card" onclick="window.location.href='case-studies.html#modus'">
+          <div class="case-image case-image-3">
+            <div class="case-image-inner"></div>
+            <div class="case-overlay"><span>ModusBPCM</span></div>
+          </div>
+          <span class="case-tag">PR &middot; Luxury &middot; Media</span>
+          <h3 class="case-name">ModusBPCM</h3>
+          <p class="case-desc">Secured press coverage for luxury and design clients in London, building targeted media lists and supporting influencer campaigns for high-profile brands.</p>
+          <span class="case-arrow">View Project →</span>
+        </div>
+
+        <div class="case-card" onclick="window.location.href='case-studies.html#smu-look'">
+          <div class="case-image case-image-4">
+            <div class="case-image-inner"></div>
+            <div class="case-overlay"><span>SMU LOOK</span></div>
+          </div>
+          <span class="case-tag">Editorial &middot; Content &middot; Social</span>
+          <h3 class="case-name">SMU LOOK</h3>
+          <p class="case-desc">As Digital Director, led cross-platform content strategy for SMU's fashion publication and drove viral content reaching 450K+ for Pi Beta Phi.</p>
+          <span class="case-arrow">View Project →</span>
+        </div>
+
       </div>
-    </section>
+      <div class="case-cta">
+        <a href="case-studies.html" class="btn-outline">View All Case Studies</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact / Back Cover -->
-    <section class="contact" id="contact">
-      <span class="section-label">The Back Cover</span>
-      <h2 class="contact-heading">Let's talk about<br>what's possible.</h2>
-      <p class="contact-sub">I work with a select number of brands at a time to ensure every partnership gets the attention it deserves.</p>
-      <button class="contact-btn" onclick="window.location.href='mailto:bellastryker18@gmail.com'">Get In Touch</button>
-      <span class="contact-footer">Isabella Stryker &middot; 2026</span>
-    </section>
-  </div>
+  <!-- WHAT I BRING -->
+  <section class="capabilities" id="capabilities">
+    <div class="capabilities-inner">
+      <span class="section-label">What I Bring</span>
+      <h2 class="section-title">A dual-lens approach to every brief.</h2>
+      <p class="capabilities-intro">My economics background taught me to ask: what's the goal, and how do we measure it? My fashion media training taught me that how something looks and feels is the strategy. I don't separate the two.</p>
+      <div class="capabilities-grid">
+        <div class="capability-item">
+          <span class="capability-number">01</span>
+          <h3>Strategic Thinking</h3>
+          <p>Campaign planning, market research, competitive analysis, full-funnel strategy, and data-driven decision making. I start with the objective and work backwards.</p>
+        </div>
+        <div class="capability-item">
+          <span class="capability-number">02</span>
+          <h3>Content &amp; Creative</h3>
+          <p>Copywriting, editorial direction, social media content, graphic production, video editing, and brand voice development across platforms.</p>
+        </div>
+        <div class="capability-item">
+          <span class="capability-number">03</span>
+          <h3>Operations &amp; Systems</h3>
+          <p>Workflow automation, CRM management (Salesforce), inventory systems (Shopify), process documentation, and cross-team coordination.</p>
+        </div>
+        <div class="capability-item">
+          <span class="capability-number">04</span>
+          <h3>AI-Augmented Work</h3>
+          <p>I use AI tools daily — for research, ideation, copy iteration, and workflow optimization. Not as a replacement for thinking, but as an extension of it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script src="nav.js"></script>
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="contact-heading">Let's connect.</h2>
+      <p class="contact-sub">I'm actively looking for full-time marketing roles starting May 2026. If you're building a team that values both strategic thinking and creative execution, I'd love to talk.</p>
+      <div class="contact-links">
+        <a href="mailto:bstryker@smu.edu" class="contact-btn">bstryker@smu.edu</a>
+        <a href="https://linkedin.com/in/isabellastryker" target="_blank" class="contact-btn-secondary">LinkedIn</a>
+      </div>
+      <p class="contact-footer">Isabella Stryker &mdash; Marketing Portfolio &mdash; bellastryker.com</p>
+    </div>
+  </section>
+
 </body>
+<script src="nav.js"></script>
 </html>
