@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1500">
+<title>Editor's Note — Bella Stryker</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --burgundy: #581317;
+    --blush: #e5c8cc;
+    --cream: #F7F3EE;
+    --warm-white: #FAF8F5;
+  }
+
+  html, body {
+    width: 1500px;
+    height: 1000px;
+    overflow: hidden;
+    background: #e8e4dd;
+    font-family: 'Cormorant Garamond', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── BOOK SPREAD WRAPPER ─────────────────────── */
+  .spread {
+    width: 1500px;
+    height: 1000px;
+    display: flex;
+    position: relative;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.3);
+  }
+
+  /* Page edges (stacked pages effect) */
+  .spread::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 4px;
+    bottom: 4px;
+    width: 10px;
+    background: repeating-linear-gradient(
+      to right,
+      #e0dbd3 0px, #e0dbd3 1px,
+      #ede8e1 1px, #ede8e1 2px
+    );
+    z-index: 10;
+  }
+
+  .spread::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 4px;
+    bottom: 4px;
+    width: 10px;
+    background: repeating-linear-gradient(
+      to left,
+      #e0dbd3 0px, #e0dbd3 1px,
+      #ede8e1 1px, #ede8e1 2px
+    );
+    z-index: 10;
+  }
+
+  /* ── LEFT PAGE ───────────────────────────────── */
+  .page-left {
+    width: 50%;
+    height: 100%;
+    background: var(--burgundy);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Subtle fabric/linen texture overlay */
+  .page-left::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23581317'/%3E%3Crect width='1' height='1' fill='%23621820' opacity='0.4'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%234d1015' opacity='0.3'/%3E%3C/svg%3E");
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .left-image-area {
+    width: 76%;
+    height: 82%;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(229,200,204,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .left-image-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    mix-blend-mode: luminosity;
+    opacity: 0.85;
+  }
+
+  /* Placeholder shown when no image */
+  .left-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .placeholder-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--blush);
+    opacity: 0.5;
+  }
+
+  /* Decorative botanical line art fallback */
+  .botanical-lines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.3;
+  }
+
+  .botanical-lines span {
+    display: block;
+    background: var(--blush);
+    border-radius: 50%;
+  }
+
+  /* ── SPINE ───────────────────────────────────── */
+  .spine {
+    width: 4px;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+    z-index: 5;
+    background: linear-gradient(
+      to right,
+      rgba(0,0,0,0.25) 0%,
+      rgba(0,0,0,0.08) 40%,
+      rgba(0,0,0,0.04) 50%,
+      rgba(0,0,0,0.08) 60%,
+      rgba(0,0,0,0.18) 100%
+    );
+  }
+
+  /* ── RIGHT PAGE ──────────────────────────────── */
+  .page-right {
+    width: calc(50% - 4px);
+    height: 100%;
+    background: var(--warm-white);
+    position: relative;
+    padding: 64px 56px 56px 60px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Subtle paper texture */
+  .page-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  /* Page number top left */
+  .page-number {
+    position: absolute;
+    top: 28px;
+    left: 60px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    opacity: 0.35;
+  }
+
+  /* Section label */
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 8px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    opacity: 0.55;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  /* Title */
+  .editors-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 68px;
+    font-weight: 300;
+    color: #1a1a1a;
+    line-height: 0.92;
+    letter-spacing: -1px;
+    margin-bottom: 32px;
+  }
+
+  .editors-title em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* Rule */
+  .title-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--burgundy);
+    opacity: 0.12;
+    margin-bottom: 28px;
+  }
+
+  /* Body content area — two column */
+  .body-area {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 28px;
+    flex: 1;
+    align-items: start;
+  }
+
+  .body-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Drop cap */
+  .drop-cap-para {
+    display: flex;
+    gap: 0;
+    align-items: flex-start;
+    margin-bottom: 11px;
+  }
+
+  .drop-cap {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 600;
+    color: var(--burgundy);
+    line-height: 0.78;
+    float: left;
+    margin-right: 4px;
+    margin-top: 4px;
+    opacity: 0.9;
+  }
+
+  .drop-cap-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: #2a2a2a;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .body-para {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12.5px;
+    line-height: 1.75;
+    color: #2a2a2a;
+    text-align: justify;
+    hyphens: auto;
+    margin-bottom: 11px;
+  }
+
+  .body-para:last-child { margin-bottom: 0; }
+
+  /* Signature */
+  .signature-block {
+    margin-top: 20px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(88,19,23,0.1);
+  }
+
+  .sig-with {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--burgundy);
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .sig-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--burgundy);
+    display: block;
+  }
+
+  /* Right column — photo strip */
+  .photo-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    height: 100%;
+  }
+
+  .photo-box {
+    flex: 1;
+    background: #e8e2d8;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%) contrast(1.05);
+  }
+
+  /* Placeholder color blocks */
+  .photo-box-1 { background: linear-gradient(135deg, #c8b4b8 0%, #d4c0c4 100%); }
+  .photo-box-2 { background: linear-gradient(135deg, #b8a0a4 0%, #c8b0b4 100%); }
+  .photo-box-3 { background: linear-gradient(135deg, #9a8488 0%, #b09498 100%); }
+
+  .photo-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(88,19,23,0.04);
+  }
+
+</style>
+</head>
+<body>
+
+<div class="spread">
+
+  <!-- LEFT PAGE — botanical image -->
+  <div class="page-left">
+    <div class="left-image-area">
+      <!-- Replace src with your orchid image path -->
+      <img
+        src="orchid.jpg"
+        alt="Botanical"
+        onerror="this.style.display='none'"
+      >
+      <div class="left-placeholder">
+        <span class="placeholder-label">Your Image Here</span>
+        <!-- Decorative SVG orchid suggestion -->
+        <svg width="180" height="260" viewBox="0 0 180 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:0.18">
+          <ellipse cx="90" cy="50" rx="30" ry="45" stroke="#e5c8cc" stroke-width="1" fill="none"/>
+          <ellipse cx="45" cy="80" rx="28" ry="42" stroke="#e5c8cc" stroke-width="1" fill="none" transform="rotate(-25 45 80)"/>
+          <ellipse cx="135" cy="80" rx="28" ry="42" stroke="#e5c8cc" stroke-width="1" fill="none" transform="rotate(25 135 80)"/>
+          <ellipse cx="55" cy="130" rx="26" ry="40" stroke="#e5c8cc" stroke-width="1" fill="none" transform="rotate(-40 55 130)"/>
+          <ellipse cx="125" cy="130" rx="26" ry="40" stroke="#e5c8cc" stroke-width="1" fill="none" transform="rotate(40 125 130)"/>
+          <ellipse cx="90" cy="110" rx="14" ry="20" stroke="#e5c8cc" stroke-width="1.5" fill="none"/>
+          <line x1="90" y1="130" x2="90" y2="260" stroke="#e5c8cc" stroke-width="1" opacity="0.6"/>
+          <line x1="90" y1="175" x2="50" y2="220" stroke="#e5c8cc" stroke-width="0.8" opacity="0.4"/>
+          <line x1="90" y1="200" x2="130" y2="240" stroke="#e5c8cc" stroke-width="0.8" opacity="0.4"/>
+          <!-- Second orchid -->
+          <ellipse cx="50" cy="185" rx="20" ry="30" stroke="#e5c8cc" stroke-width="0.8" fill="none" transform="rotate(-15 50 185)"/>
+          <ellipse cx="30" cy="200" rx="18" ry="28" stroke="#e5c8cc" stroke-width="0.8" fill="none" transform="rotate(-35 30 200)"/>
+          <ellipse cx="70" cy="200" rx="18" ry="28" stroke="#e5c8cc" stroke-width="0.8" fill="none" transform="rotate(20 70 200)"/>
+          <ellipse cx="50" cy="210" rx="10" ry="14" stroke="#e5c8cc" stroke-width="1" fill="none"/>
+        </svg>
+        <span class="placeholder-label" style="margin-top:12px">Drop orchid image here</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPINE -->
+  <div class="spine"></div>
+
+  <!-- RIGHT PAGE — Editor's Note -->
+  <div class="page-right">
+    <span class="page-number">Bella Stryker — Marketing Portfolio</span>
+
+    <span class="section-label">Bella Stryker</span>
+
+    <h1 class="editors-title"><em>Editor's</em><br>Note</h1>
+
+    <div class="title-rule"></div>
+
+    <div class="body-area">
+      <div class="body-text">
+
+        <div class="drop-cap-para">
+          <span class="drop-cap">W</span>
+          <p class="drop-cap-text">hen I first started building this portfolio, it began as something practical: a place to show the work. But somewhere along the way, it became something more — a reflection of how I actually think, and why the combination of economics and fashion media was never an accident.</p>
+        </div>
+
+        <p class="body-para">I grew up obsessing over two things that most people treat as opposites: numbers and narrative. Spreadsheets and aesthetics. Strategy and story. My degree at SMU gave me the language for both — and the last four years gave me the proof that they belong together.</p>
+
+        <p class="body-para">What you'll find here is the result of that belief in action. A B2B email campaign that earned a 39% open rate because the copy understood the audience. A luxury PR internship in London that taught me how reputation is built one placement at a time. A brand operations project that proved beautiful marketing falls apart without a clean backend. An editorial platform that reached 450,000 people because it respected what they actually wanted to see.</p>
+
+        <p class="body-para">I use AI as part of my daily workflow — not as a shortcut, but as a tool for thinking faster without losing the craft. This is not a portfolio of everything I've done. It's a portfolio of how I work: curious, rigorous, and always asking whether the strategy and the story are saying the same thing.</p>
+
+        <div class="signature-block">
+          <span class="sig-with">With intention,</span>
+          <span class="sig-name">Isabella Stryker</span>
+        </div>
+
+      </div>
+
+      <!-- Right photo strip -->
+      <div class="photo-strip">
+        <div class="photo-box photo-box-1"></div>
+        <div class="photo-box photo-box-2"></div>
+        <div class="photo-box photo-box-3"></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
