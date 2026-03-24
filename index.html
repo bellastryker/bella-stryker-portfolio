@@ -53,10 +53,13 @@
      ============================================ */
   .book-scene {
     perspective: 1400px;
-    width: 280px;
-    height: 380px;
+    width: 320px;
+    height: 400px;
     position: relative;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* The full book wrapper — rotates to reveal open state */
@@ -143,32 +146,14 @@
     margin-top: 32px;
   }
 
-  /* Book spine */
+  /* Book spine — hidden, image includes this detail */
   .book-spine {
-    position: absolute;
-    top: 0; left: -18px;
-    width: 18px;
-    height: 100%;
-    background: linear-gradient(90deg, #c9aeb3, #d4b8bc);
-    border-radius: 3px 0 0 3px;
-    box-shadow: -3px 4px 12px rgba(0,0,0,0.2);
-    transform: rotateY(-90deg);
-    transform-origin: right center;
+    display: none;
   }
 
-  /* Book pages (right edge) */
+  /* Book pages (right edge) — hidden, image includes this detail */
   .book-pages-edge {
-    position: absolute;
-    top: 2px; right: -6px;
-    width: 8px;
-    height: calc(100% - 4px);
-    background: repeating-linear-gradient(
-      to bottom,
-      #f0ebe4 0px, #f0ebe4 2px,
-      #e8e2db 2px, #e8e2db 3px
-    );
-    border-radius: 0 2px 2px 0;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    display: none;
   }
 
   /* ---- OPEN BOOK ---- */
