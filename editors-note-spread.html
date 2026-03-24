@@ -101,10 +101,10 @@
   .left-image-area img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
-    mix-blend-mode: luminosity;
-    opacity: 0.85;
+    mix-blend-mode: multiply;
+    opacity: 1;
   }
 
   /* Placeholder shown when no image */
@@ -357,10 +357,9 @@
   <!-- LEFT PAGE — botanical image -->
   <div class="page-left">
     <div class="left-image-area">
-      <!-- Replace src with your orchid image path -->
       <img
-        src="orchid.jpg"
-        alt="Botanical"
+        src="images/orchids.jpeg"
+        alt="Botanical Orchids"
         onerror="this.style.display='none'"
       >
       <div class="left-placeholder">
