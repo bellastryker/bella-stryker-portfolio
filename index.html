@@ -1,434 +1,87 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Isabella Stryker — Brand, Marketing, Social</title>
-<meta name="description" content="Portfolio of Isabella Stryker — brand strategy, marketing, and social work across fashion, lifestyle, and mission-driven brands.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #FAF8F5;
-    --ink: #1A1A1A;
-    --muted: #6B6660;
-    --rule: #E5E0D8;
-    --accent: #8B7355;
-    --serif: "Fraunces", Georgia, serif;
-    --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-    --max: 960px;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-  a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color .2s; }
-  a:hover { border-color: var(--ink); }
-  img { max-width: 100%; display: block; }
-
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
-
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 10;
-    background: var(--bg);
-    border-bottom: 1px solid var(--rule);
-  }
-  nav .wrap {
-    display: flex; justify-content: space-between; align-items: center;
-    padding-top: 20px; padding-bottom: 20px;
-  }
-  nav .mark {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: .01em;
-    border: none;
-  }
-  nav ul { list-style: none; display: flex; gap: 28px; }
-  nav ul a { font-size: 14px; border: none; color: var(--muted); }
-  nav ul a:hover { color: var(--ink); }
-  @media (max-width: 600px) {
-    nav ul { gap: 18px; }
-    nav ul a { font-size: 13px; }
-  }
-
-  /* HERO */
-  header.hero { padding: 120px 0 100px; border-bottom: 1px solid var(--rule); }
-  .eyebrow {
-    font-size: 12px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 24px;
-  }
-  h1 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(40px, 6vw, 72px);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 32px;
-    max-width: 16ch;
-  }
-  h1 em { font-style: italic; font-weight: 300; }
-  .lede { font-size: 19px; line-height: 1.6; max-width: 60ch; color: #2B2926; }
-
-  /* SECTIONS */
-  section { padding: 100px 0; border-bottom: 1px solid var(--rule); }
-  section:last-of-type { border-bottom: none; }
-  .section-label {
-    font-size: 12px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 48px;
-  }
-  h2 {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(28px, 3.6vw, 40px);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    margin-bottom: 40px;
-    max-width: 22ch;
-  }
-  h3 {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: 26px;
-    line-height: 1.2;
-    margin-bottom: 6px;
-  }
-
-  /* WORK LIST */
-  .work-list { display: flex; flex-direction: column; }
-  .project {
-    padding: 56px 0;
-    border-top: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 48px;
-  }
-  .project:first-child { border-top: none; padding-top: 0; }
-  .project .meta { font-size: 14px; color: var(--muted); }
-  .project .meta .role { display: block; margin-top: 4px; }
-  .project .meta .year { display: block; margin-top: 4px; font-variant-numeric: tabular-nums; }
-  .project .blurb { font-size: 17px; color: #2B2926; margin-top: 14px; max-width: 52ch; }
-  .project .details { margin-top: 28px; }
-  .project .details summary {
-    cursor: pointer;
-    font-size: 13px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    list-style: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding-bottom: 2px;
-    border-bottom: 1px solid var(--rule);
-    transition: color .2s, border-color .2s;
-  }
-  .project .details summary::-webkit-details-marker { display: none; }
-  .project .details summary:hover { color: var(--ink); border-color: var(--ink); }
-  .project .details summary::after {
-    content: "+"; font-size: 16px; line-height: 1;
-  }
-  .project .details[open] summary::after { content: "−"; }
-  .case {
-    margin-top: 32px;
-    padding-top: 32px;
-    border-top: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 24px 32px;
-    font-size: 15.5px;
-    line-height: 1.65;
-  }
-  .case dt {
-    font-size: 12px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding-top: 3px;
-  }
-  .case dd { color: #2B2926; }
-  .case ul { list-style: none; padding: 0; }
-  .case ul li { padding-left: 18px; position: relative; margin-bottom: 6px; }
-  .case ul li::before {
-    content: ""; position: absolute; left: 0; top: 12px;
-    width: 8px; height: 1px; background: var(--muted);
-  }
-  .pull {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: 36px;
-    line-height: 1.2;
-    color: var(--ink);
-    margin: 24px 0;
-    padding-left: 20px;
-    border-left: 1px solid var(--accent);
-  }
-  .pull em { font-style: italic; }
-
-  @media (max-width: 720px) {
-    header.hero { padding: 80px 0 60px; }
-    section { padding: 72px 0; }
-    .project { grid-template-columns: 1fr; gap: 20px; padding: 40px 0; }
-    .case { grid-template-columns: 1fr; gap: 6px 0; }
-    .case dt { padding-top: 16px; }
-    .case dd { margin-bottom: 8px; }
-    .pull { font-size: 26px; }
-  }
-
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; }
-  .about-grid p { margin-bottom: 20px; max-width: 60ch; color: #2B2926; }
-  .about-grid p:last-child { margin-bottom: 0; }
-  .about-grid .kicker { font-size: 14px; color: var(--muted); }
-  @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; gap: 24px; } }
-
-  /* CONTACT / FOOTER */
-  footer { padding: 80px 0 60px; border-top: 1px solid var(--rule); }
-  footer .wrap { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 16px; }
-  footer .email {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: clamp(24px, 3vw, 32px);
-    border: none;
-  }
-  footer .links { display: flex; gap: 24px; font-size: 14px; color: var(--muted); }
-  footer .links a { border: none; }
-  footer .links a:hover { color: var(--ink); }
-  footer .colophon { font-size: 12px; color: var(--muted); letter-spacing: .08em; margin-top: 40px; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Isabella Stryker — Brand Strategy & Editorial Direction</title>
+  <meta name="description" content="Isabella Stryker — brand strategy, editorial direction, and commercial analysis for luxury, lifestyle, and early-stage companies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-
-<nav>
-  <div class="wrap">
-    <a href="#top" class="mark">Isabella Stryker</a>
-    <ul>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
-<header class="hero" id="top">
-  <div class="wrap">
-    <p class="eyebrow">Brand · Marketing · Social</p>
-    <h1>Building brands that are <em>as sharp as they look.</em></h1>
-    <p class="lede">I'm a senior at SMU double-majoring in Economics (Financial Applications) and Fashion Media. My work spans brand strategy, growth marketing, and editorial — from a 39% open-rate B2B email campaign at ReSupply, to a full brand system for a luxury handbag atelier, to leading the digital rebuild of SMU's student fashion publication. I care about clear positioning, measurable outcomes, and brands with a point of view.</p>
-  </div>
-</header>
-
-<section id="work">
-  <div class="wrap">
-    <p class="section-label">Selected Work</p>
-    <div class="work-list">
-
-      <!-- ReSupply -->
-      <article class="project">
-        <div class="meta">
-          <strong>ReSupply</strong>
-          <span class="role">Marketing &amp; Sales Intern → Remote Contractor</span>
-          <span class="year">2025 — Present</span>
-        </div>
-        <div>
-          <h3>B2B acquisition &amp; editorial ownership for a donation logistics marketplace.</h3>
-          <p class="blurb">Built a B2B realtor acquisition campaign that hit a 39% average open rate, and authored 29 SEO-optimized blog posts as owner of ReSupply's editorial calendar. Retained as a remote contractor through senior year following a full-time summer internship.</p>
-          <details class="details">
-            <summary>Read case study</summary>
-            <dl class="case">
-              <dt>Role</dt>
-              <dd>Marketing &amp; Sales Intern → Remote Contractor. Reporting to the VP of Growth.</dd>
-
-              <dt>The Goal</dt>
-              <dd>Grow top-of-funnel leads and open a new B2B acquisition channel (realtors) for a company scaling its partner network.</dd>
-
-              <dt>What I Did</dt>
-              <dd>
-                <ul>
-                  <li>Segmented 2,000+ realtor leads and built multi-step email sequences for a new B2B acquisition channel.</li>
-                  <li>Launched the campaign and onboarded the first partner accounts.</li>
-                  <li>Authored and published 29 SEO-optimized blog posts, owning the editorial calendar and keyword strategy.</li>
-                  <li>Retained post-internship as the ongoing contractor for content and campaigns.</li>
-                </ul>
-              </dd>
-
-              <dt>Impact</dt>
-              <dd>
-                <div class="pull">39% average open rate across cold B2B outreach — well above the ~20% industry benchmark.</div>
-                First realtor partners onboarded. Ownership of ReSupply's SEO and blog pipeline through senior year.
-              </dd>
-            </dl>
-          </details>
-        </div>
-      </article>
-
-      <!-- House of Arella -->
-      <article class="project">
-        <div class="meta">
-          <strong>House of Arella</strong>
-          <span class="role">Content Manager</span>
-          <span class="year">2026 — Present</span>
-        </div>
-        <div>
-          <h3>A full brand system for an artisanal luxury handbag atelier.</h3>
-          <p class="blurb">Sole social consultant to a luxury handbag brand ($1,000+ price points). Delivered a brand brief, voice guidelines, and visual identity in the first month, then built a five-pillar content strategy and Meta ad targeting plan.</p>
-          <details class="details">
-            <summary>Read case study</summary>
-            <dl class="case">
-              <dt>Role</dt>
-              <dd>Content Manager. Direct to Founder.</dd>
-
-              <dt>The Goal</dt>
-              <dd>Move the brand from reactive, founder-posted content to a sustainable, strategic social presence — and lay the groundwork for paid acquisition and content-to-revenue attribution.</dd>
-
-              <dt>What I Did</dt>
-              <dd>
-                <ul>
-                  <li>Delivered a full brand brief, voice guidelines, and visual identity within the first month.</li>
-                  <li>Audited 12 months of Instagram using Later analytics to inform the strategy.</li>
-                  <li>Built a five-pillar content strategy with posting cadence, captions, and a monthly workflow.</li>
-                  <li>Developed an Instagram/Meta ad targeting strategy including segmentation, lookalike audiences, and budget allocation.</li>
-                  <li>Leading a concurrent website redesign to enable content-to-revenue attribution.</li>
-                </ul>
-              </dd>
-
-              <dt>Impact</dt>
-              <dd>Reduced founder time on social. Gave the brand its first documented voice and visual system. Paid media and attribution infrastructure in development.</dd>
-            </dl>
-          </details>
-        </div>
-      </article>
-
-      <!-- Sai Sankoh -->
-      <article class="project">
-        <div class="meta">
-          <strong>Sai Sankoh</strong>
-          <span class="role">Brand Strategy Intern</span>
-          <span class="year">Feb — May 2025</span>
-        </div>
-        <div>
-          <h3>Inventory &amp; growth infrastructure overhaul for a luxury kaftan label.</h3>
-          <p class="blurb">Ran an ABC inventory analysis on 2,000+ SKUs and turned the findings into targeted sales campaigns that drove ~30–40% sell-through of aging stock. Built the recurring quarterly workflow still in use by the founding team.</p>
-          <details class="details">
-            <summary>Read case study</summary>
-            <dl class="case">
-              <dt>Role</dt>
-              <dd>Brand Strategy Intern — led a full operational and growth-focused infrastructure rebuild across inventory, Shopify optimization, and marketing alignment.</dd>
-
-              <dt>The Problem</dt>
-              <dd>A growing luxury fashion brand with strong product-market fit was operating on fragmented inventory systems and reactive marketing. Shopify lacked structure, tracking was manual, and stock movement wasn't aligned with promotion strategy.</dd>
-
-              <dt>What I Did</dt>
-              <dd>
-                <ul>
-                  <li>Cleaned and optimized the Shopify backend — product organization, tagging, categorization.</li>
-                  <li>Built a fully automated inventory spreadsheet synced with Shopify.</li>
-                  <li>Implemented an ABC classification system to prioritize high-revenue SKUs and guide merchandising.</li>
-                  <li>Created a marketing strategy aligned to inventory velocity — push A-items, move B-items, strategically discount C-items.</li>
-                  <li>Reorganized the physical inventory room and built a recurring quarterly ABC workflow.</li>
-                  <li>Contributed to paid ad creative and performance optimization, plus an updated media kit for brand partnerships.</li>
-                </ul>
-              </dd>
-
-              <dt>Impact</dt>
-              <dd>
-                <div class="pull">~30–40% sell-through of targeted aging stock within weeks of campaign launch.</div>
-                Operational clarity across 100% of SKUs. Quarterly ABC workflow adopted as an ongoing system.
-              </dd>
-
-              <dt>Tools</dt>
-              <dd>Shopify · GA4 · Excel · Inventory Forecasting Models · Paid Meta Ads · Notion</dd>
-            </dl>
-          </details>
-        </div>
-      </article>
-
-      <!-- SMU LOOK -->
-      <article class="project">
-        <div class="meta">
-          <strong>SMU LOOK</strong>
-          <span class="role">Digital Director</span>
-          <span class="year">2024 — Present</span>
-        </div>
-        <div>
-          <h3>Leading the digital rebuild of SMU's student fashion publication.</h3>
-          <p class="blurb">Promoted twice in one year into the Digital Director seat. Led a full site redesign across 6 sections and 15+ sub-categories (now live at <a href="https://smulook.com" target="_blank" rel="noopener">smulook.com</a>), and championed the launch of ShopMy affiliate monetization as a new long-term revenue stream.</p>
-          <details class="details">
-            <summary>Read case study</summary>
-            <dl class="case">
-              <dt>Role</dt>
-              <dd>Digital Director. Leading 10 writers and a direct-report Assistant Director, coordinating with 20+ staff across social and graphics teams.</dd>
-
-              <dt>The Goal</dt>
-              <dd>Modernize SMU LOOK's digital presence and open a new revenue stream for the publication.</dd>
-
-              <dt>What I Did</dt>
-              <dd>
-                <ul>
-                  <li>Led the summer 2025 website redesign across 6 content sections and 15+ sub-categories.</li>
-                  <li>Drove creative and editorial direction across the full site rebuild.</li>
-                  <li>Championed the launch of ShopMy affiliate marketing across editorial content.</li>
-                  <li>Partnered with writers to integrate monetized links and establish a long-term revenue stream.</li>
-                  <li>Managed and mentored a team of 10+ writers.</li>
-                </ul>
-              </dd>
-
-              <dt>Impact</dt>
-              <dd>Live redesigned site at <a href="https://smulook.com" target="_blank" rel="noopener">smulook.com</a>. New monetization channel for the publication. Two promotions within one year.</dd>
-            </dl>
-          </details>
-        </div>
-      </article>
-
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__mark">Isabella <em>Stryker</em></a>
+      <nav>
+        <ul class="nav__links">
+          <li><a href="index.html" class="is-active">Index</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<section id="about">
-  <div class="wrap">
-    <p class="section-label">About</p>
-    <div class="about-grid">
-      <div>
-        <p class="kicker">Dallas, TX<br>Graduating May 2026</p>
+  <main>
+    <section class="hero container">
+      <div class="hero__kicker">
+        <span class="eyebrow">Volume I</span>
+        <span class="eyebrow eyebrow--muted">Dallas · New York · 2026</span>
       </div>
-      <div>
-        <p>I grew up somewhere between spreadsheets and style magazines, which more or less explains the Economics and Fashion Media double major at SMU. I'm drawn to brands with a point of view and the discipline to hold it — and I like the work equally on both sides, whether that's writing a five-pillar content strategy or running an ABC inventory analysis on 2,000 SKUs.</p>
-        <p>Right now I'm Content Manager at House of Arella, a remote marketing contractor at ReSupply, and Digital Director at SMU LOOK. Previously, brand strategy at Sai Sankoh. I'm Google Analytics certified and comfortable across the Adobe suite, WordPress, Later, Shopify, and Meta Ads.</p>
-        <p>Outside of work: Pilates, long hikes, horses when I can get to them, and a slightly unreasonable book stack — adventure and sci-fi, mostly.</p>
-        <p>Open to entry-level brand, marketing, and social roles in New York, LA, Dallas, or remote.</p>
+      <h1 class="hero__title">Brand strategy,<br/>editorial direction,<br/><em>and the structure</em> underneath.</h1>
+      <p class="hero__lede">Isabella Stryker is a strategist and editorial director working across luxury, lifestyle, and early-stage companies — with a foundation in economics and a point of view shaped in the margins of a magazine.</p>
+    </section>
+
+    <section class="section container">
+      <div class="preview__head">
+        <div>
+          <p class="eyebrow">Selected Work</p>
+          <h2 class="serif" style="margin-top:12px;">A quiet study<br/>of the last two years.</h2>
+        </div>
+        <a href="work.html" class="eyebrow" style="color:var(--merlot);">View all &nbsp;→</a>
       </div>
-    </div>
-  </div>
-</section>
 
-<footer id="contact">
-  <div class="wrap">
-    <a class="email" href="mailto:bstryker@smu.edu">bstryker@smu.edu</a>
-    <div class="links">
-      <a href="https://linkedin.com/in/isabellastryker" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:bstryker@smu.edu">Email</a>
-    </div>
-  </div>
-  <div class="wrap">
-    <p class="colophon">© 2026 Isabella Stryker</p>
-  </div>
-</footer>
+      <div class="preview__grid reveal">
+        <a class="preview__item" href="work.html#arella">
+          <div class="preview__media" data-caption="House of Arella · 2026"></div>
+          <div class="preview__meta">
+            <h3>House of Arella</h3>
+            <span>Brand &amp; Content</span>
+          </div>
+        </a>
+        <a class="preview__item" href="work.html#resupply">
+          <div class="preview__media" data-caption="ReSupply · 2025"></div>
+          <div class="preview__meta">
+            <h3>ReSupply</h3>
+            <span>Acquisition</span>
+          </div>
+        </a>
+        <a class="preview__item" href="work.html#saisankoh">
+          <div class="preview__media" data-caption="Sai Sankoh · 2025"></div>
+          <div class="preview__meta">
+            <h3>Sai Sankoh</h3>
+            <span>Analysis</span>
+          </div>
+        </a>
+        <a class="preview__item" href="work.html#modus">
+          <div class="preview__media" data-caption="ModusBPCM · London"></div>
+          <div class="preview__meta">
+            <h3>ModusBPCM</h3>
+            <span>Press</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
 
+  <footer class="footer">
+    <span>© Isabella Stryker, MMXXVI</span>
+    <span><a href="mailto:bstryker@smu.edu">bstryker@smu.edu</a></span>
+  </footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
