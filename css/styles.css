@@ -141,6 +141,39 @@ p { margin: 0 0 1em; }
   padding: clamp(90px, 16vw, 200px) 0 clamp(60px, 10vw, 120px);
   border-bottom: 1px solid var(--hair);
 }
+
+/* Decorative orchid — right-side editorial accent */
+.hero--orchid { position: relative; overflow: visible; }
+.hero__orchid {
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  transform: translateY(-42%);
+  width: clamp(280px, 32vw, 420px);
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.95;
+}
+.hero--orchid .hero__kicker,
+.hero--orchid .hero__title,
+.hero--orchid .hero__lede { position: relative; z-index: 2; }
+
+@media (max-width: 860px) {
+  .hero__orchid {
+    width: 220px;
+    right: -60px;
+    top: auto;
+    bottom: -20px;
+    transform: none;
+    opacity: 0.55;
+  }
+}
+@media (max-width: 520px) {
+  .hero__orchid { display: none; }
+}
 .hero__kicker {
   display: flex;
   gap: 32px;
