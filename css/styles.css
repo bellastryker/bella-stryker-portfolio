@@ -459,8 +459,38 @@ p { margin: 0 0 1em; }
   color: var(--ink);
 }
 
-/* -------- Resume embed -------- */
-.resume-section { max-width: 900px; }
+/* -------- Collapsible Resume -------- */
+.resume__collapse {
+  margin-top: 36px;
+  border-top: 1px solid var(--hair);
+  padding-top: 24px;
+}
+.resume__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--merlot);
+  font-weight: 500;
+  padding: 8px 0;
+  list-style: none;
+  transition: letter-spacing 0.3s ease;
+}
+.resume__toggle::-webkit-details-marker { display: none; }
+.resume__toggle::marker { display: none; content: ""; }
+.resume__toggle:hover { letter-spacing: 0.3em; }
+.resume__toggle-arrow {
+  transition: transform 0.3s ease;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+}
+details[open] .resume__toggle-arrow { transform: rotate(90deg); }
+.resume__collapse-body {
+  padding-top: 24px;
+}
 .resume__embed {
   border: 1px solid var(--hair);
   border-radius: 6px;
