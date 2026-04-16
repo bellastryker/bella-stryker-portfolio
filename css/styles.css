@@ -384,17 +384,25 @@ p { margin: 0 0 1em; }
   color: var(--stone);
   font-family: var(--sans);
 }
-.case__embed-frame {
+.case__embed-scroll {
+  height: 480px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.case__embed-img {
   display: block;
   width: 100%;
-  height: 480px;
-  border: none;
+  height: auto;
+}
+.case__embed:hover .case__embed-bar {
+  background: var(--cream);
 }
 @media (max-width: 860px) {
-  .case__embed-frame { height: 360px; }
+  .case__embed-scroll { height: 360px; }
 }
 @media (max-width: 520px) {
-  .case__embed-frame { height: 280px; }
+  .case__embed-scroll { height: 280px; }
 }
 
 /* -------- About page -------- */
@@ -449,6 +457,53 @@ p { margin: 0 0 1em; }
   font-family: var(--serif);
   font-size: 1.1rem;
   color: var(--ink);
+}
+
+/* -------- Resume embed -------- */
+.resume-section { max-width: 900px; }
+.resume__embed {
+  border: 1px solid var(--hair);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+}
+.resume__viewer {
+  display: block;
+  width: 100%;
+  height: 680px;
+}
+.resume__download {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--merlot);
+  border: 1px solid var(--merlot);
+  padding: 12px 28px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.resume__download:hover {
+  background: var(--merlot);
+  color: var(--cream);
+}
+@media (max-width: 860px) {
+  .resume__viewer { height: 500px; }
+}
+@media (max-width: 520px) {
+  .resume__viewer { height: 400px; }
+}
+
+/* -------- Personal / hobbies -------- */
+.about__personal {
+  max-width: 60ch;
+}
+.about__personal p {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-bottom: 1.2em;
 }
 
 /* -------- Contact page -------- */
