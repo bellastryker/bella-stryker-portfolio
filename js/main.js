@@ -18,3 +18,22 @@
   );
   items.forEach((el) => io.observe(el));
 })();
+
+/* Polaroid stack — auto-rotate */
+(function () {
+  const stack = document.querySelector(".polaroid-stack");
+  if (!stack) return;
+  const cards = stack.querySelectorAll(".polaroid");
+  if (cards.length < 2) return;
+  let current = 0;
+
+  function rotate() {
+    cards.forEach((c) => c.classList.remove("is-active", "is-prev"));
+    const prev = current;
+    current = (current + 1) % cards.length;
+    cards[prev].classList.add("is-prev");
+    cards[current].classList.add("is-active");
+  }
+
+  setInterval(rotate, 3200);
+})();
