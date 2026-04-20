@@ -433,10 +433,14 @@ p { margin: 0 0 1em; }
   max-width: 16ch;
 }
 .about__body h1 em { font-style: italic; color: var(--merlot); }
-.about h1 em { font-style: italic; color: var(--merlot); }
+h1 em { font-style: italic; color: var(--merlot); }
 .about__section-title {
   font-size: clamp(2.2rem, 4.5vw, 3.6rem);
   margin-bottom: 36px;
+}
+.about__section-title em {
+  font-style: italic;
+  color: var(--merlot);
 }
 .about__body p {
   font-family: var(--serif);
