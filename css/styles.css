@@ -561,6 +561,9 @@ details[open] .resume__toggle {
   gap: clamp(40px, 6vw, 80px);
   align-items: start;
 }
+.unpro__grid > .polaroid-stack {
+  margin-top: 80px;
+}
 @media (max-width: 860px) {
   .unpro__grid { grid-template-columns: 1fr; }
 }
