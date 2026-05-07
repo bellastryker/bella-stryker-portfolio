@@ -572,7 +572,7 @@ details[open] .resume__toggle {
 .polaroid-stack {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4.5;
   max-width: 340px;
   justify-self: center;
 }
