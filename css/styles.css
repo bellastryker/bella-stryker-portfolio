@@ -347,6 +347,14 @@ p { margin: 0 0 1em; }
   width: auto;
   border-radius: 8px;
 }
+.case__aside-video {
+  display: block;
+  margin-top: 28px;
+}
+.case__aside-video .case__video {
+  width: 100%;
+  max-height: none;
+}
 
 /* Live site embed — scrollable iframe window */
 .case__embed {
