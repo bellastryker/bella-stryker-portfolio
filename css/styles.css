@@ -334,19 +334,18 @@ p { margin: 0 0 1em; }
 
 .case__figure {
   grid-column: 1 / -1;
-  aspect-ratio: 16 / 7;
-  background: var(--cream-2);
   margin-top: 48px;
   position: relative;
+  display: flex;
+  justify-content: center;
 }
-.case__figure::after {
-  content: attr(data-caption);
-  position: absolute;
-  right: 18px; bottom: 14px;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--stone);
+.case__figure a {
+  display: block;
+}
+.case__video {
+  max-height: 500px;
+  width: auto;
+  border-radius: 8px;
 }
 
 /* Live site embed — scrollable iframe window */
