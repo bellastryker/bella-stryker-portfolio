@@ -355,6 +355,13 @@ p { margin: 0 0 1em; }
   width: 100%;
   max-height: none;
 }
+.case__aside-image {
+  margin-top: 28px;
+}
+.case__aside-image img {
+  width: 100%;
+  border-radius: 8px;
+}
 
 /* Live site embed — scrollable iframe window */
 .case__embed {
