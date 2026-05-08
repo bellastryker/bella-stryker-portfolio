@@ -232,23 +232,20 @@ p { margin: 0 0 1em; }
 .preview__item:nth-child(4) { grid-column: span 7; margin-top: 40px; }
 
 .preview__media {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 16 / 9;
   background: var(--cream-2);
   margin-bottom: 18px;
   overflow: hidden;
   position: relative;
   transition: transform 0.6s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.preview__item:nth-child(odd) .preview__media { aspect-ratio: 5 / 4; }
-.preview__media::after {
-  content: attr(data-caption);
-  position: absolute;
-  inset: auto 0 0 0;
-  padding: 14px 18px;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--stone);
+.preview__logo {
+  max-width: 55%;
+  max-height: 50%;
+  object-fit: contain;
 }
 .preview__item:hover .preview__media { transform: translateY(-4px); }
 .preview__meta {
