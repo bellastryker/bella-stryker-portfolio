@@ -269,16 +269,21 @@ p { margin: 0 0 1em; }
 .work-header {
   padding: clamp(70px, 11vw, 150px) 0 clamp(40px, 6vw, 80px);
   border-bottom: 1px solid var(--hair);
+  text-align: center;
 }
 .work-header h1 {
   max-width: 14ch;
   margin-bottom: 32px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .work-header p {
   font-family: var(--serif);
   font-size: clamp(1.15rem, 1.8vw, 1.45rem);
   max-width: 52ch;
   color: var(--ink-soft);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .case {
