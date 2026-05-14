@@ -9,6 +9,138 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* ---- Instagram Story Phone Mockup ---- */
+    .ig-phone {
+      position: relative;
+      width: 280px;
+      height: 560px;
+      background: #000;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18), inset 0 0 0 3px #2a2a2a;
+      border: 3px solid #1a1a1a;
+      margin-top: 0;
+    }
+    .ig-phone__notch {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 22px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      z-index: 30;
+    }
+    /* Story progress bars */
+    .ig-phone__bars {
+      position: absolute;
+      top: 38px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      gap: 4px;
+      z-index: 20;
+    }
+    .ig-phone__bar {
+      flex: 1;
+      height: 2.5px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .ig-phone__bar span {
+      display: block;
+      width: 0%;
+      height: 100%;
+      background: #fff;
+      border-radius: 2px;
+    }
+    .ig-phone__bar.is-done span { width: 100%; }
+    .ig-phone__bar.is-active span {
+      width: 0%;
+      animation: igFill 4s linear forwards;
+    }
+    @keyframes igFill {
+      to { width: 100%; }
+    }
+    /* IG header */
+    .ig-phone__header {
+      position: absolute;
+      top: 48px;
+      left: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 20;
+    }
+    .ig-phone__avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid #fff;
+      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+    }
+    .ig-phone__username {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+    /* Slides */
+    .ig-phone__slides {
+      position: absolute;
+      inset: 0;
+    }
+    .ig-phone__slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .ig-phone__slide.is-active { opacity: 1; }
+    /* Bottom bar */
+    .ig-phone__bottom {
+      position: absolute;
+      bottom: 16px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 20;
+    }
+    .ig-phone__reply {
+      flex: 1;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      font-family: var(--sans);
+    }
+    .ig-phone__icons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    /* Tap zones */
+    .ig-phone__tap {
+      position: absolute;
+      top: 80px;
+      bottom: 60px;
+      width: 50%;
+      z-index: 15;
+      cursor: pointer;
+    }
+    .ig-phone__tap--left { left: 0; }
+    .ig-phone__tap--right { right: 0; }
+  </style>
 </head>
 <body>
   <header class="nav">
@@ -106,6 +238,48 @@
                 <iframe src="assets/LOOK-Feature-Digital.pdf" style="width:100%;height:100%;border:none;" title="LOOK Feature Story PDF"></iframe>
               </div>
             </a>
+
+            <!-- Instagram Story Mockup -->
+            <div style="margin-top:48px;">
+              <div class="case__section-title" style="margin-bottom:18px;">Social Companion</div>
+              <p style="font-size:1.02rem;color:var(--ink-soft);max-width:62ch;margin-bottom:32px;">Instagram story series designed to promote the feature and drive traffic to the full article on SMU LOOK.</p>
+            </div>
+            <div class="ig-phone" id="igStory">
+              <!-- Phone frame -->
+              <div class="ig-phone__notch"></div>
+              <!-- Story progress bars -->
+              <div class="ig-phone__bars">
+                <div class="ig-phone__bar is-active"><span></span></div>
+                <div class="ig-phone__bar"><span></span></div>
+                <div class="ig-phone__bar"><span></span></div>
+                <div class="ig-phone__bar"><span></span></div>
+                <div class="ig-phone__bar"><span></span></div>
+              </div>
+              <!-- IG header -->
+              <div class="ig-phone__header">
+                <div class="ig-phone__avatar"></div>
+                <span class="ig-phone__username">smulook</span>
+              </div>
+              <!-- Slides -->
+              <div class="ig-phone__slides">
+                <img src="assets/images/LookStory1.png" class="ig-phone__slide is-active" alt="Story 1" />
+                <img src="assets/images/LookStory2.png" class="ig-phone__slide" alt="Story 2" />
+                <img src="assets/images/LookStory3.png" class="ig-phone__slide" alt="Story 3" />
+                <img src="assets/images/LookStory4.png" class="ig-phone__slide" alt="Story 4" />
+                <img src="assets/images/LookStory5.png" class="ig-phone__slide" alt="Story 5" />
+              </div>
+              <!-- Bottom bar -->
+              <div class="ig-phone__bottom">
+                <div class="ig-phone__reply">Send message</div>
+                <div class="ig-phone__icons">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2z"/></svg>
+                </div>
+              </div>
+              <!-- Tap zones -->
+              <div class="ig-phone__tap ig-phone__tap--left" onclick="igPrev()"></div>
+              <div class="ig-phone__tap ig-phone__tap--right" onclick="igNext()"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -118,5 +292,29 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    (function(){
+      var current = 0, total = 5, timer;
+      var slides = document.querySelectorAll('.ig-phone__slide');
+      var bars = document.querySelectorAll('.ig-phone__bar');
+      function goTo(n) {
+        if (n < 0) n = 0;
+        if (n >= total) n = 0;
+        slides.forEach(function(s){ s.classList.remove('is-active'); });
+        bars.forEach(function(b){ b.classList.remove('is-active','is-done'); b.querySelector('span').style.animation='none'; });
+        slides[n].classList.add('is-active');
+        for (var i = 0; i < n; i++) bars[i].classList.add('is-done');
+        bars[n].classList.add('is-active');
+        void bars[n].querySelector('span').offsetWidth;
+        bars[n].querySelector('span').style.animation = 'igFill 4s linear forwards';
+        current = n;
+        clearInterval(timer);
+        timer = setTimeout(function(){ goTo(current + 1); }, 4000);
+      }
+      window.igNext = function(){ goTo(current + 1); };
+      window.igPrev = function(){ goTo(current - 1); };
+      goTo(0);
+    })();
+  </script>
 </body>
 </html>
