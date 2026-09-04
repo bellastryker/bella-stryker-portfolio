@@ -67,14 +67,29 @@ For the case-study hero figures, use a wide 16:7 composition. For preview tiles,
 
 ## Typography
 
-Cormorant Garamond (serif headlines) and Inter (body) are loaded from Google Fonts. No other dependencies.
+- **Italiana** — display headlines, set in uppercase with wide tracking.
+- **Jost** — body copy and labels (geometric sans, weights 300/400/500).
+- **Caveat** — polaroid captions only.
+
+All three load from Google Fonts. No other dependencies.
 
 ## Color tokens
 
-Defined as CSS custom properties at the top of `styles.css` — edit in one place:
+Defined as CSS custom properties at the top of `styles.css` — edit in one place.
+The palette is taken from the Bella Stryker portfolio deck: white paper,
+pale ice-blue panels, near-black ink.
 
-- `--cream` base
-- `--ink` body
-- `--merlot` accent
-- `--olive` secondary accent
-- `--stone` and `--hair` neutrals
+- `--paper` `#ffffff` page base
+- `--mist` `#dee6ef` panel blue
+- `--mist-soft` `#eef2f7` section tint
+- `--mist-deep` `#c9d5e3` rules and numerals
+- `--ink` `#171717` headlines and body
+- `--ink-soft` / `--ink-mute` secondary text
+- `--slate` `#4d5f77` links and active states
+
+## Layout motifs
+
+- `.cover` — centered display title over an ice-blue meta band (deck cover)
+- `.panel` / `.panel--soft` — full-bleed tinted sections
+- `.split` — two-up layout with one tinted pane (deck interior pages)
+- `.caps` — two-column capability list

@@ -4,144 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Coursework — Bella Stryker</title>
-  <meta name="description" content="Selected academic work from SMU's Fashion Journalism capstone — runway criticism and feature writing." />
+  <meta name="description" content="Fashion journalism projects from SMU: a runway collection review and a feature story on rental fashion." />
+  <link rel="canonical" href="https://bellastryker.com/coursework.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
-  <style>
-    /* ---- Instagram Story Phone Mockup ---- */
-    .ig-phone {
-      position: relative;
-      width: 260px;
-      height: 520px;
-      background: #000;
-      border-radius: 36px;
-      overflow: hidden;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.18), inset 0 0 0 3px #2a2a2a;
-      border: 3px solid #1a1a1a;
-      margin-top: 0;
-    }
-    .ig-phone__notch {
-      position: absolute;
-      top: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 22px;
-      background: #1a1a1a;
-      border-radius: 12px;
-      z-index: 30;
-    }
-    /* Story progress bars */
-    .ig-phone__bars {
-      position: absolute;
-      top: 38px;
-      left: 12px;
-      right: 12px;
-      display: flex;
-      gap: 4px;
-      z-index: 20;
-    }
-    .ig-phone__bar {
-      flex: 1;
-      height: 2.5px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .ig-phone__bar span {
-      display: block;
-      width: 0%;
-      height: 100%;
-      background: #fff;
-      border-radius: 2px;
-    }
-    .ig-phone__bar.is-done span { width: 100%; }
-    .ig-phone__bar.is-active span {
-      width: 0%;
-      animation: igFill 4s linear forwards;
-    }
-    @keyframes igFill {
-      to { width: 100%; }
-    }
-    /* IG header */
-    .ig-phone__header {
-      position: absolute;
-      top: 48px;
-      left: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      z-index: 20;
-    }
-    .ig-phone__avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: 1.5px solid #fff;
-      background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
-    }
-    .ig-phone__username {
-      font-family: var(--sans);
-      font-size: 12px;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: 0.02em;
-    }
-    /* Slides */
-    .ig-phone__slides {
-      position: absolute;
-      inset: 0;
-    }
-    .ig-phone__slide {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #000;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .ig-phone__slide.is-active { opacity: 1; }
-    /* Bottom bar */
-    .ig-phone__bottom {
-      position: absolute;
-      bottom: 16px;
-      left: 12px;
-      right: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      z-index: 20;
-    }
-    .ig-phone__reply {
-      flex: 1;
-      border: 1px solid rgba(255,255,255,0.5);
-      border-radius: 20px;
-      padding: 8px 16px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.5);
-      font-family: var(--sans);
-    }
-    .ig-phone__icons {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    /* Tap zones */
-    .ig-phone__tap {
-      position: absolute;
-      top: 80px;
-      bottom: 60px;
-      width: 50%;
-      z-index: 15;
-      cursor: pointer;
-    }
-    .ig-phone__tap--left { left: 0; }
-    .ig-phone__tap--right { right: 0; }
-  </style>
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="Mi Ri init Vi Gi Rr Wi Ji Bi capture calculateEventProperties tn register register_once register_for_session unregister unregister_for_session an getFeatureFlag getFeatureFlagPayload getFeatureFlagResult isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync un identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty nn Xi createPersonProfile setInternalOrTestUser sn Hi cn opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ki debug Lr rn getPageViewId captureTraceFeedback captureTraceMetric Di".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_nHtUKdJ2cVmvsmuaGV37hXGk35jCPASbwRm5SjpypSxK', {
@@ -154,7 +22,7 @@
 <body>
   <header class="nav">
     <div class="nav__inner">
-      <a href="index.html" class="nav__mark">Bella <em>Stryker</em></a>
+      <a href="index.html" class="nav__mark">Bella Stryker</a>
       <nav>
         <ul class="nav__links">
           <li><a href="index.html">Index</a></li>
@@ -168,9 +36,9 @@
   </header>
 
   <main>
-    <section class="work-header container">
+    <section class="page-head container">
       <p class="eyebrow" style="margin-bottom:28px;">Fashion Journalism · FM 4301 · Spring 2026</p>
-      <h1>Academic work,<br/><em>in full.</em></h1>
+      <h1>Academic work,<br/>in full.</h1>
       <p>Two projects from SMU's Fashion Journalism course — a runway collection review and a feature story — completed under Dr. Andrea Arterbery in the Journalism Division.</p>
     </section>
 
@@ -188,7 +56,7 @@
             </div>
           </aside>
           <div>
-            <h2>A Revolution <em>That Wasn't.</em></h2>
+            <h2>A Revolution That Wasn't.</h2>
             <div class="case__body">
               <div>
                 <div class="case__section-title">Subject</div>
@@ -261,7 +129,7 @@
             </div>
           </aside>
           <div>
-            <h2>Is Gen Z Ending <em>Outfit Repeating?</em></h2>
+            <h2>Is Gen Z Ending Outfit Repeating?</h2>
             <div class="case__body">
               <div>
                 <div class="case__section-title">Subject</div>

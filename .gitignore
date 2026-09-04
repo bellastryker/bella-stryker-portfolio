@@ -1,0 +1,3 @@
+.posthog.snippet
+*.bak
+.DS_Store
