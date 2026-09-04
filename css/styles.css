@@ -245,7 +245,7 @@ p { margin: 0 0 1em; }
 /* -------- Work preview grid (home) -------- */
 .preview__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 40vw, 230px), 1fr));
   gap: clamp(20px, 3vw, 34px);
 }
 .preview__item { display: block; }
