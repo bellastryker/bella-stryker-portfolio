@@ -6,90 +6,67 @@ Static HTML / CSS / vanilla JS — no build step, no framework.
 ## File structure
 
 ```
-BS.com/
+bella-stryker-portfolio/
 ├── index.html        # Home
-├── work.html         # Portfolio / case studies
-├── about.html        # Biography
+├── work.html         # Case studies
+├── coursework.html   # Fashion Journalism coursework
+├── about.html        # Biography + off the clock
 ├── contact.html      # Contact
-├── css/
-│   └── styles.css
-├── js/
-│   └── main.js       # Scroll reveal only
+├── css/styles.css    # The whole design system
+├── js/main.js        # Announcement bar, sticky header, mobile menu, tabs, scroll reveal
 ├── assets/
-│   └── images/       # Drop images here when ready
-├── CNAME             # Custom domain (bellastryker.com)
+│   ├── images/       # Original uploads (left untouched)
+│   │   └── site/     # Web-ready versions used by the redesign (rotated photos, ink logos, tile crops)
+│   ├── resume.pdf
+│   └── *.pdf         # Coursework PDFs
+├── CNAME             # bellastryker.com
 └── README.md
 ```
 
-## Local preview
+## Preview locally
 
-From the project folder:
+Double-click `index.html`, or from this folder:
 
 ```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
+python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 
-Or just double-click `index.html` — everything loads from CDN-hosted fonts.
+## Publish
 
-## Deploying to GitHub Pages
-
-1. **Create the repo.** On GitHub, create a new public repository named exactly `bellastryker.github.io` (replace with your GitHub username if different) — or any name, e.g. `portfolio`.
-2. **Push these files** to the `main` branch:
-   ```bash
-   cd /Users/isabellastryker/Desktop/BS.com
-   git init
-   git add .
-   git commit -m "Initial site"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/REPO_NAME.git
-   git push -u origin main
-   ```
-3. **Turn on Pages.** In the repo on GitHub, go to **Settings → Pages**. Under *Source*, choose **Deploy from a branch**, select `main` and `/ (root)`, and save.
-4. **Point the domain.** The `CNAME` file in this folder already contains `bellastryker.com`. In **Settings → Pages → Custom domain**, confirm `bellastryker.com` is set and check *Enforce HTTPS* once DNS verifies.
-5. **DNS at your registrar.** Since your domain is already set up, verify the records point at GitHub Pages:
-   - Four `A` records on the apex (`@`) → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - One `CNAME` on `www` → `YOUR_USERNAME.github.io`
-
-Changes pushed to `main` go live in ~1 minute.
-
-## Adding imagery later
-
-Each `.preview__media` and `.case__figure` block is ready for an image. Drop files into `assets/images/` and replace the empty `<div>` with an `<img>`:
-
-```html
-<div class="preview__media">
-  <img src="assets/images/arella-01.jpg" alt="House of Arella" />
-</div>
+```bash
+cd ~/Desktop/BS.com/bella-stryker-portfolio
+git add -A && git commit -m "Redesign" && git push
 ```
 
-For the case-study hero figures, use a wide 16:7 composition. For preview tiles, 4:5 portrait or 5:4 landscape works best. Aim for under 300 KB per image — export at 1600px wide, quality 75–80.
+GitHub Pages serves `main` at bellastryker.com — live in about a minute.
 
-## Typography
+## Design system (Nov 2026 redesign)
 
-- **Italiana** — display headlines, set in uppercase with wide tracking.
-- **Jost** — body copy and labels (geometric sans, weights 300/400/500).
-- **Caveat** — polaroid captions only.
+Inspired by Cece Jewellery: quiet, editorial, image-led.
 
-All three load from Google Fonts. No other dependencies.
+**Type** (Google Fonts)
+- **Libertinus Mono** — every header, title, nav link and label, always uppercase and tracked (`--title`). It stands in for **ABC Gaisyr Semi Mono**, the paid Dinamo font Cece Jewellery uses for its titles. To use the real thing: buy a web license from Dinamo, drop the .woff2 files in `assets/fonts/`, add an `@font-face` for "ABC Gaisyr Semi Mono" at the top of `styles.css`, and put it first in `--title`.
+- **EB Garamond** — body copy, links, tabs and the large centred statement (Cece's equivalent is Henry, also paid).
+- **Jost** 300 — the spaced-out `BELLA STRYKER` wordmark only.
 
-## Color tokens
+**Palette** (CSS custom properties at the top of `styles.css`)
+- `--paper` `#fcfbf9` page · `--linen` `#f4f0eb` tiles · `--sand` `#ece6de` deeper band
+- `--ink` `#2f2b28` text · `--ink-soft` / `--ink-mute` secondary
+- `--espresso` `#2a2623` dark tile + announcement bar · `--stone` / `--hair` rules and frames
 
-Defined as CSS custom properties at the top of `styles.css` — edit in one place.
-The palette is taken from the Bella Stryker portfolio deck: white paper,
-pale ice-blue panels, near-black ink.
+**Components**
+- `.announce` — dismissible dark bar above the header.
+- `.site-header` — sticky; nav split left/right around a centred wordmark; collapses to Menu / wordmark / Contact under 900px with a slide-out `.drawer`.
+- `.split` + `.tile` — full-bleed 50/50 tiles. `.tile--image` (photo + scrim), `.tile--linen` (with a `.frame`d photo), `.tile--dark` (centred italic line in an engraved frame). `.tile__caption` = label + one line bottom-left, underlined `.link` bottom-right.
+- `.tabs` + `.cards` — tabbed four-up grid on linen tiles. `.card__logo` (ink logo), `.card__doc` (page with shadow), `.card__alt` (image that fades in on hover; add `card--swap` to fade the logo out).
+- `.values` — four-up row with monoline circle icons.
+- `.statement` — centred display paragraph with italic phrases.
+- `.gallery` / `.photo-grid` — personal photos with italic captions.
+- `.letter` — "Curious for more?" email band.
+- `.case` — case-study layout: sticky aside (No., meta, media) + main column; `.embed` browser frames scroll on hover.
+- `.site-footer` — four link columns, oversized wordmark, base row.
 
-- `--paper` `#ffffff` page base
-- `--mist` `#dee6ef` panel blue
-- `--mist-soft` `#eef2f7` section tint
-- `--mist-deep` `#c9d5e3` rules and numerals
-- `--ink` `#171717` headlines and body
-- `--ink-soft` / `--ink-mute` secondary text
-- `--slate` `#4d5f77` links and active states
-
-## Layout motifs
-
-- `.cover` — centered display title over an ice-blue meta band (deck cover)
-- `.panel` / `.panel--soft` — full-bleed tinted sections
-- `.split` — two-up layout with one tinted pane (deck interior pages)
-- `.caps` — two-column capability list
+**Gotchas**
+- Labels inside a container that styles `p` need `p:not(.label)` on the container rule, or the label inherits body size.
+- Logos in `assets/images/site/logo-*.png` are transparent, single-ink (`#2f2b28`) versions of the originals — regenerate from the originals if a brand updates its mark.
+- `polaroid-1/2/6.jpeg` are stored sideways; use the rotated `site/life-*.jpg` copies.

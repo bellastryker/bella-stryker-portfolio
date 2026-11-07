@@ -1,39 +1,109 @@
-/* Reveal-on-scroll — no dependencies. */
+/* bellastryker.com — small, dependency-free behaviours */
+
+/* Safe storage (private windows can throw) */
+var store = {
+  get: function (k) { try { return window.sessionStorage.getItem(k); } catch (e) { return null; } },
+  set: function (k, v) { try { window.sessionStorage.setItem(k, v); } catch (e) {} }
+};
+
+/* Announcement bar — dismiss for the session */
 (function () {
-  const items = document.querySelectorAll(".reveal");
-  if (!("IntersectionObserver" in window) || !items.length) {
-    items.forEach((el) => el.classList.add("is-visible"));
-    return;
-  }
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
-        }
-      });
-    },
-    { rootMargin: "0px 0px -10% 0px", threshold: 0.08 }
-  );
-  items.forEach((el) => io.observe(el));
+  var bar = document.querySelector(".announce");
+  if (!bar) return;
+  if (store.get("bs-announce") === "hidden") bar.classList.add("is-hidden");
+  var close = bar.querySelector(".announce__close");
+  if (close) close.addEventListener("click", function () {
+    bar.classList.add("is-hidden");
+    store.set("bs-announce", "hidden");
+  });
 })();
 
-/* Polaroid stack — auto-rotate */
+/* Header hairline once the page scrolls */
 (function () {
-  const stack = document.querySelector(".polaroid-stack");
-  if (!stack) return;
-  const cards = stack.querySelectorAll(".polaroid");
-  if (cards.length < 2) return;
-  let current = 0;
+  var header = document.querySelector(".site-header");
+  if (!header) return;
+  var onScroll = function () { header.classList.toggle("is-scrolled", window.scrollY > 8); };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+})();
 
-  function rotate() {
-    cards.forEach((c) => c.classList.remove("is-active", "is-prev"));
-    const prev = current;
-    current = (current + 1) % cards.length;
-    cards[prev].classList.add("is-prev");
-    cards[current].classList.add("is-active");
+/* Mobile drawer */
+(function () {
+  var drawer = document.querySelector(".drawer");
+  var openBtn = document.querySelector(".menu-btn");
+  if (!drawer || !openBtn) return;
+  var closeEls = drawer.querySelectorAll("[data-close]");
+  function open() {
+    drawer.classList.add("is-open");
+    drawer.setAttribute("aria-hidden", "false");
+    openBtn.setAttribute("aria-expanded", "true");
+    document.body.classList.add("is-locked");
+    var first = drawer.querySelector("a, button");
+    if (first) first.focus();
   }
+  function close() {
+    drawer.classList.remove("is-open");
+    drawer.setAttribute("aria-hidden", "true");
+    openBtn.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("is-locked");
+    openBtn.focus();
+  }
+  openBtn.addEventListener("click", open);
+  closeEls.forEach(function (el) { el.addEventListener("click", close); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && drawer.classList.contains("is-open")) close();
+  });
+})();
 
-  setInterval(rotate, 3200);
+/* Tabs */
+(function () {
+  document.querySelectorAll("[role='tablist']").forEach(function (list) {
+    var tabs = list.querySelectorAll("[role='tab']");
+    function select(tab) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      });
+    }
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener("click", function () { select(tab); });
+      tab.addEventListener("keydown", function (e) {
+        var n = null;
+        if (e.key === "ArrowRight") n = tabs[(i + 1) % tabs.length];
+        if (e.key === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (n) { e.preventDefault(); n.focus(); select(n); }
+      });
+    });
+  });
+})();
+
+/* Reveal on scroll */
+(function () {
+  var items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window) || !items.length) {
+    items.forEach(function (el) { el.classList.add("is-visible"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
+  items.forEach(function (el) { io.observe(el); });
+})();
+
+/* Footer year in Roman numerals */
+(function () {
+  var el = document.querySelector("[data-year]");
+  if (!el) return;
+  var n = new Date().getFullYear(), r = "",
+      map = [[1000,"M"],[900,"CM"],[500,"D"],[400,"CD"],[100,"C"],[90,"XC"],[50,"L"],[40,"XL"],[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]];
+  map.forEach(function (p) { while (n >= p[0]) { r += p[1]; n -= p[0]; } });
+  el.textContent = r;
 })();
