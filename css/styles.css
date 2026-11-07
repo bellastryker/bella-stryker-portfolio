@@ -23,7 +23,6 @@
      to switch, add an @font-face for Gaisyr and put it first in this stack. */
   --title:   "Libertinus Mono", "Courier Prime", "Courier New", ui-monospace, monospace;
   --serif:   "EB Garamond", Garamond, Georgia, "Times New Roman", serif;
-  --mark:    "Jost", "Futura", "Century Gothic", "Helvetica Neue", Arial, sans-serif;
 
   /* Layout */
   --max: 1440px;
@@ -180,15 +179,11 @@ h1, h2 { text-wrap: balance; }
 }
 .nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); }
 
-.wordmark {
-  font-family: var(--mark);
-  font-weight: 300;
-  font-size: clamp(19px, 2vw, 27px);
-  letter-spacing: 0.42em;
-  margin-right: -0.42em;          /* optically re-centre trailing tracking */
-  text-transform: uppercase;
-  white-space: nowrap;
-  line-height: 1;
+.wordmark { display: block; line-height: 0; }
+.wordmark img {
+  height: clamp(44px, 4vw, 58px);
+  width: auto;
+  filter: drop-shadow(0 1px .5px rgba(90, 66, 30, .25)) drop-shadow(0 3px 3px rgba(90, 66, 30, .1));
 }
 
 .menu-btn, .header-cta { display: none; }
@@ -256,6 +251,7 @@ body.is-locked { overflow: hidden; }
 .split--hero .tile { min-height: 100%; }
 
 .tile--image > img,
+.tile--image > video,
 .tile--image > picture img {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
@@ -270,7 +266,8 @@ body.is-locked { overflow: hidden; }
   background: linear-gradient(to top, rgba(28, 24, 21, .52), rgba(28, 24, 21, 0));
   z-index: -1;
 }
-a.tile--image:hover > img { transform: scale(1.025); }
+a.tile--image:hover > img, a.tile--image:hover > video { transform: scale(1.025); }
+.tile--video { background: #93a3b5 url("../assets/images/site/hero-ocean-poster.jpg") center / cover; }
 
 .tile--linen { background: var(--linen); }
 .tile--dark { background: var(--espresso); color: var(--cream); }
@@ -303,6 +300,40 @@ a.tile--image:hover > img { transform: scale(1.025); }
   margin-bottom: 96px;
 }
 .frame img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+
+/* Embossed-paper frame (hero) — photo window sits at 74,82 → 290,372 of a 364×454 artboard */
+.tile--paper { background-color: #f6f3ee; }
+/* tactile cotton-paper relief, lit from the top-left like the embossing; sits over the frame art, under the photo */
+.tile--paper::before {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: url("../assets/images/site/paper-texture.jpg") 0 0 / 256px 256px;
+  mix-blend-mode: hard-light;
+  opacity: var(--paper-tooth, .4);
+}
+.tile--paper .emboss__photo { z-index: 2; }
+.tile--paper .tile__caption { z-index: 3; }
+.emboss {
+  position: relative;
+  width: min(80%, 560px, calc((100vh - 320px) * 0.8018));
+  min-width: 240px;
+  aspect-ratio: 364 / 454;
+  margin-bottom: 116px;
+}
+.emboss__art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.emboss__photo {
+  position: absolute;
+  left: 20.33%; top: 18.06%; width: 59.34%; height: 63.88%;
+  margin: 0;
+  background: var(--linen);
+  box-shadow: 0 1px 1.5px rgba(70, 58, 48, .16), 0 12px 24px -14px rgba(70, 58, 48, .38);
+}
+.emboss__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 58% 26%; transition: transform 1.6s var(--ease); }
+a.tile--paper:hover .emboss__photo img { transform: scale(1.02); }
+.emboss__photo { overflow: hidden; }
+.tile--paper .tile__caption { color: var(--ink); }
 
 /* Dark tile with centred display line */
 .tile__feature {
@@ -459,17 +490,20 @@ a.tile--image:hover > img { transform: scale(1.025); }
 .footer__cols ul { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 6px; }
 .footer__cols a, .footer__cols li { font-size: 17px; color: var(--ink-soft); }
 .footer__cols a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
-.footer__mark {
-  font-family: var(--mark);
-  font-weight: 300;
-  text-transform: uppercase;
+.footer__monogram {
+  display: block;
+  height: clamp(84px, 8vw, 124px);
+  width: auto;
+  margin: clamp(64px, 8vw, 112px) auto 0;
+  filter: drop-shadow(0 1px 1px rgba(90, 66, 30, .28)) drop-shadow(0 4px 4px rgba(90, 66, 30, .12));
+}
+.drawer__monogram { height: 38px; width: auto; filter: drop-shadow(0 1px 1px rgba(90, 66, 30, .2)); }
+.footer__name {
   text-align: center;
-  white-space: nowrap;
-  font-size: clamp(30px, 7.4vw, 112px);
-  letter-spacing: 0.32em;
-  margin-right: -0.32em;
-  line-height: 1;
-  padding-block: clamp(56px, 7vw, 96px) clamp(28px, 3vw, 40px);
+  letter-spacing: .32em;
+  padding-left: .32em;            /* optically re-centre trailing tracking */
+  color: var(--ink-soft);
+  margin: 22px 0 clamp(52px, 6vw, 84px);
 }
 .footer__base {
   display: flex; justify-content: space-between; gap: 16px;
@@ -641,7 +675,7 @@ a.tile--image:hover > img { transform: scale(1.025); }
   .menu-btn i { display: grid; gap: 5px; width: 20px; }
   .menu-btn i::before, .menu-btn i::after { content: ""; height: 1px; background: currentColor; }
   .header-cta { justify-self: end; font-family: var(--title); font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; }
-  .wordmark { font-size: 16px; letter-spacing: .32em; margin-right: -.32em; }
+  .wordmark img { height: 40px; }
 
   .split, .split--hero, .split--contact { grid-template-columns: 1fr; min-height: 0; }
   .tile, .split--hero .tile { min-height: 0; aspect-ratio: 4 / 5; }
@@ -653,9 +687,11 @@ a.tile--image:hover > img { transform: scale(1.025); }
   .tile--image::after { height: 62%; background: linear-gradient(to top, rgba(28, 24, 21, .62), rgba(28, 24, 21, 0)); }
 
   /* framed-photo tile: caption flows below the frame */
-  .tile--linen { flex-direction: column; aspect-ratio: auto !important; padding: 56px var(--gutter) 40px; }
+  .tile--linen, .tile--paper { flex-direction: column; aspect-ratio: auto !important; padding: 44px var(--gutter) 40px; }
   .tile--linen .frame { width: min(64%, 300px); margin: 12px 0 0; }
-  .tile--linen .tile__caption { position: static; width: 100%; margin-top: 56px; }
+  .emboss { width: min(92%, 400px); margin: 0; }
+  .tile--paper::before { background-size: 200px 200px; opacity: var(--paper-tooth-sm, .3); }
+  .tile--linen .tile__caption, .tile--paper .tile__caption { position: static; width: 100%; margin-top: 40px; }
 
   .tabs-bar { grid-template-columns: 1fr; justify-items: center; row-gap: 14px; }
   .tabs { grid-column: 1; }

@@ -47,7 +47,7 @@ Inspired by Cece Jewellery: quiet, editorial, image-led.
 **Type** (Google Fonts)
 - **Libertinus Mono** — every header, title, nav link and label, always uppercase and tracked (`--title`). It stands in for **ABC Gaisyr Semi Mono**, the paid Dinamo font Cece Jewellery uses for its titles. To use the real thing: buy a web license from Dinamo, drop the .woff2 files in `assets/fonts/`, add an `@font-face` for "ABC Gaisyr Semi Mono" at the top of `styles.css`, and put it first in `--title`.
 - **EB Garamond** — body copy, links, tabs and the large centred statement (Cece's equivalent is Henry, also paid).
-- **Jost** 300 — the spaced-out `BELLA STRYKER` wordmark only.
+- **Logo** — no web font: the header uses Bella's gold sculptural BS monogram (`assets/images/site/monogram-bs.webp`, a transparent cut-out from her photo); the footer pairs it with the name in tracked title capitals.
 
 **Palette** (CSS custom properties at the top of `styles.css`)
 - `--paper` `#fcfbf9` page · `--linen` `#f4f0eb` tiles · `--sand` `#ece6de` deeper band
@@ -56,7 +56,9 @@ Inspired by Cece Jewellery: quiet, editorial, image-led.
 
 **Components**
 - `.announce` — dismissible dark bar above the header.
-- `.site-header` — sticky; nav split left/right around a centred wordmark; collapses to Menu / wordmark / Contact under 900px with a slide-out `.drawer`.
+- `.site-header` — sticky; nav split left/right around the centred gold BS monogram; collapses to Menu / wordmark / Contact under 900px with a slide-out `.drawer`.
+- `.tile--paper` + `.emboss` — the hero's blind-embossed floral frame (`assets/images/site/emboss-frame.webp`, an original olive-and-wildflower design) with the headshot set into its window. The tile carries a tactile cotton-paper tooth (`paper-texture.jpg`, tileable, hard-light over the frame and under the photo; strength via `--paper-tooth`, finer on phones).
+- `.tile--video` — the hero's looping video (`assets/video/hero-ocean.mp4`, plus a lighter `-sm` file served to phones): a dusk ocean clip, stabilised by tracking the horizon and crossfaded end-to-start so the loop is seamless; poster in `assets/images/site/`. Muted autoplay; held on its first frame for visitors with reduced motion.
 - `.split` + `.tile` — full-bleed 50/50 tiles. `.tile--image` (photo + scrim), `.tile--linen` (with a `.frame`d photo), `.tile--dark` (centred italic line in an engraved frame). `.tile__caption` = label + one line bottom-left, underlined `.link` bottom-right.
 - `.tabs` + `.cards` — tabbed four-up grid on linen tiles. `.card__logo` (ink logo), `.card__doc` (page with shadow), `.card__alt` (image that fades in on hover; add `card--swap` to fade the logo out).
 - `.values` — four-up row with monoline circle icons.
@@ -64,7 +66,7 @@ Inspired by Cece Jewellery: quiet, editorial, image-led.
 - `.gallery` / `.photo-grid` — personal photos with italic captions.
 - `.letter` — "Curious for more?" email band.
 - `.case` — case-study layout: sticky aside (No., meta, media) + main column; `.embed` browser frames scroll on hover.
-- `.site-footer` — four link columns, oversized wordmark, base row.
+- `.site-footer` — four link columns, the gold BS monogram with `BELLA STRYKER` set beneath it like a hallmark, base row. The monogram is also the favicon (`favicon.png`, `apple-touch-icon.png`) and tops the mobile menu.
 
 **Gotchas**
 - Labels inside a container that styles `p` need `p:not(.label)` on the container rule, or the label inherits body size.

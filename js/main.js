@@ -107,3 +107,17 @@ var store = {
   map.forEach(function (p) { while (n >= p[0]) { r += p[1]; n -= p[0]; } });
   el.textContent = r;
 })();
+
+/* Respect reduced-motion: hold looping videos on their first frame */
+(function () {
+  var mq = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+  if (!mq) return;
+  function apply() {
+    document.querySelectorAll("video[autoplay]").forEach(function (v) {
+      if (mq.matches) { v.pause(); try { v.currentTime = 0; } catch (e) {} }
+      else { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    });
+  }
+  apply();
+  if (mq.addEventListener) mq.addEventListener("change", apply);
+})();
