@@ -735,3 +735,109 @@ a.tile--paper:hover .emboss__photo img { transform: scale(1.02); }
   .resume__viewer { height: 480px; }
   .embed { --h: 360px; }
 }
+
+/* -------- Off the Clock scrapbook collage -------- */
+.collage {
+  position: relative;
+  container-type: inline-size;
+  aspect-ratio: 1.6;
+  margin-top: 8px;
+}
+.collage .piece {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  width: calc(var(--w) * 1%);
+  z-index: var(--z);
+  transform: rotate(var(--r));
+}
+.collage .piece i { position: absolute; inset: 0; display: block; }
+.collage .fibre { background: #fbf9f4; }
+
+/* paper scraps */
+.collage .scrap { height: calc(var(--h) * 1%); filter: drop-shadow(0 1px 1px rgba(40, 30, 20, .22)) drop-shadow(0 6px 9px rgba(40, 30, 20, .12)); }
+.scrap--fans-blue .paper { background: url("../assets/images/site/scrap-fans-blue.jpg") center 30% / cover; }
+.scrap--deco .paper      { background: url("../assets/images/site/scrap-deco.jpg") center / 340px auto; }
+.scrap--crystal .paper   { background: url("../assets/images/site/scrap-crystal.jpg") center / 300px auto; }
+.scrap--spots .paper     { background: url("../assets/images/site/scrap-spots.jpg") center 35% / 100% auto; }
+.scrap--fans-pink .paper { background: url("../assets/images/site/scrap-fans-pink.jpg") center 40% / cover; }
+.scrap--orchid .paper    { background: url("../assets/images/site/scrap-orchid.jpg") center 22% / cover; }
+
+/* photos: prints with a white border, or torn and pasted */
+.collage .photo { margin: 0; filter: drop-shadow(0 1px 1.5px rgba(40, 30, 20, .28)) drop-shadow(0 10px 14px rgba(40, 30, 20, .16)); }
+.collage .photo img { display: block; width: 100%; height: auto; position: relative; }
+.photo--print { background: #fbfaf7; padding: .55cqw .55cqw 1.6cqw; }
+.photo--torn .fibre { inset: -2px; }
+
+/* washi tape */
+.collage .tape {
+  height: calc(var(--h) * 1%);
+  background: rgba(238, 230, 214, .72);
+  box-shadow: inset 0 0 0 100vmax rgba(255, 255, 255, .06);
+  filter: drop-shadow(0 1px 1px rgba(40, 30, 20, .12));
+}
+
+/* handwritten torn-paper notes */
+.collage .note { width: auto; filter: drop-shadow(0 1px 1px rgba(40, 30, 20, .2)) drop-shadow(0 4px 6px rgba(40, 30, 20, .1)); }
+.collage .note .paper { background: url("../assets/images/site/paper-texture.jpg") 0 0 / 256px, #f7f3ec; background-blend-mode: soft-light, normal; }
+.collage .note span {
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  font-family: "Homemade Apple", "Caveat", cursive;
+  font-size: max(10.5px, calc(var(--fs, 1.1) * 1cqw));
+  line-height: 1;
+  color: #3d3732;
+  padding: 1.25cqw 1.6cqw .8cqw;
+}
+
+@media (max-width: 900px) {
+  .collage { aspect-ratio: .46; max-width: 560px; margin-inline: auto; }
+  .collage .piece { left: calc(var(--mx) * 1%); top: calc(var(--my) * 1%); width: calc(var(--mw) * 1%); transform: rotate(var(--mr)); }
+  .collage .scrap, .collage .tape { height: calc(var(--mh) * 1%); }
+  .collage .note { width: auto; }
+  .collage .note span { font-size: calc(var(--mfs, 3) * 1cqw); padding: 2.6cqw 3.4cqw 1.6cqw; }
+  .collage .desk-only { display: none; }
+  .photo--print { padding: 1.2cqw 1.2cqw 3.6cqw; }
+}
+
+/* -------- Brand cards: live-site preview on hover -------- */
+.card__site {
+  position: absolute;
+  inset: 9% 7%;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  border: 1px solid var(--stone);
+  box-shadow: 0 1px 2px rgba(47, 43, 40, .08), 0 22px 40px -22px rgba(47, 43, 40, .45);
+  opacity: 0;
+  transform: translateY(14px) scale(.985);
+  transition: opacity .55s var(--ease), transform .7s var(--ease);
+  pointer-events: none;
+}
+.card__site-bar {
+  display: flex; align-items: center; gap: 5px;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--hair);
+  background: var(--linen);
+}
+.card__site-bar i { width: 7px; height: 7px; border-radius: 50%; background: var(--stone); flex: none; }
+.card__site-bar span {
+  margin-left: 8px;
+  font-family: var(--title);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.card__site-view { position: relative; flex: 1; overflow: hidden; background: #fff; }
+.card__site-view img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%;
+  transition: object-position 7s cubic-bezier(.45, .05, .35, 1);
+}
+.card:hover .card__site, .card:focus-visible .card__site { opacity: 1; transform: none; }
+.card:hover .card__site-view img, .card:focus-visible .card__site-view img { object-position: 50% 100%; transition-delay: .5s; }
+@media (hover: none) { .card__site { display: none; } }
