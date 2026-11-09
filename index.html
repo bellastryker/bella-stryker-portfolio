@@ -125,7 +125,19 @@
         </div>
 
         <div class="tab-panel" id="panel-brand" role="tabpanel" aria-labelledby="tab-brand">
-          <div class="cards">
+          <div class="carousel" data-carousel>
+            <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button>
+            <div class="cards carousel__track">
+            <a class="card card--swap" href="work.html#therealreal">
+              <div class="card__media">
+                <img class="card__logo card__logo--trr" src="assets/images/site/logo-trr.png" alt="The RealReal" />
+                <div class="card__site" aria-hidden="true"><div class="card__site-bar"><i></i><i></i><i></i><span>therealreal.com</span></div><div class="card__site-view"><img src="assets/images/site/site-trr.jpg" alt="" loading="lazy" /></div></div>
+              </div>
+              <div class="card__body">
+                <h3 class="label card__title">The RealReal</h3>
+                <p class="card__sub">Luxury Resale · 2026–Present</p>
+              </div>
+            </a>
             <a class="card card--swap" href="work.html#arella">
               <div class="card__media">
                 <img class="card__logo card__logo--arella" src="assets/images/site/logo-arella.png" alt="House of Arella" />
@@ -166,11 +178,16 @@
                 <p class="card__sub">Luxury Press, London · 2024</p>
               </div>
             </a>
+            </div>
+            <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button>
+            <div class="carousel__progress" aria-hidden="true"><i></i></div>
           </div>
         </div>
 
         <div class="tab-panel" id="panel-editorial" role="tabpanel" aria-labelledby="tab-editorial" hidden>
-          <div class="cards">
+          <div class="carousel" data-carousel>
+            <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button>
+            <div class="cards carousel__track">
             <a class="card" href="work.html#look">
               <div class="card__media">
                 <img class="card__doc" src="assets/images/site/smulook-tile.jpg" alt="SMU LOOK homepage" loading="lazy" />
@@ -207,6 +224,9 @@
                 <p class="card__sub">29 Published Posts · 2025–26</p>
               </div>
             </a>
+            </div>
+            <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button>
+            <div class="carousel__progress" aria-hidden="true"><i></i></div>
           </div>
         </div>
       </div>
