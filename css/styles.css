@@ -601,7 +601,7 @@ a.tile--paper:hover .emboss__photo img { transform: scale(1.02); }
 .split--about { min-height: auto; }
 .split--about .tile { min-height: clamp(560px, 70vw, 980px); }
 .about-panel { background: var(--linen); padding: clamp(56px, 7vw, 112px) clamp(24px, 6vw, 104px); display: flex; flex-direction: column; justify-content: center; }
-.about-panel h1 { margin: 22px 0 32px; }
+.about-panel h1 { margin: 0 0 32px; }
 .about-panel p:not(.label) { max-width: 56ch; font-size: 18.5px; line-height: 1.62; }
 .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0 0; padding-top: 26px; border-top: 1px solid var(--stone); max-width: 56ch; }
 .facts dt { font-family: var(--title); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); }
