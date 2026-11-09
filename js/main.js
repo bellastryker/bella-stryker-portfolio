@@ -67,6 +67,7 @@ var store = {
         var panel = document.getElementById(t.getAttribute("aria-controls"));
         if (panel) panel.hidden = !on;
       });
+      document.dispatchEvent(new CustomEvent("carousel:refresh"));
     }
     tabs.forEach(function (tab, i) {
       tab.addEventListener("click", function () { select(tab); });
@@ -120,4 +121,44 @@ var store = {
   }
   apply();
   if (mq.addEventListener) mq.addEventListener("change", apply);
+})();
+
+/* Card carousels: arrows, progress line, swipe/trackpad via native scroll-snap */
+(function () {
+  document.querySelectorAll("[data-carousel]").forEach(function (root) {
+    var track = root.querySelector(".carousel__track");
+    var prev = root.querySelector(".carousel__btn--prev");
+    var next = root.querySelector(".carousel__btn--next");
+    var thumb = root.querySelector(".carousel__progress i");
+    if (!track) return;
+    function step() {
+      var card = track.querySelector(".card");
+      if (!card) return track.clientWidth;
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return card.getBoundingClientRect().width + gap;
+    }
+    function update() {
+      var max = track.scrollWidth - track.clientWidth;
+      var x = track.scrollLeft;
+      root.classList.toggle("is-static", max <= 2);
+      if (prev) prev.disabled = x <= 2;
+      if (next) next.disabled = x >= max - 2;
+      if (thumb && track.scrollWidth) {
+        var frac = track.clientWidth / track.scrollWidth;
+        thumb.style.setProperty("--thumb", (frac * 100) + "%");
+        var p = max > 0 ? (x / max) * ((1 - frac) / frac) * 100 : 0;
+        thumb.style.setProperty("--pos", p + "%");
+      }
+    }
+    if (prev) prev.addEventListener("click", function () { track.scrollBy({ left: -step(), behavior: "smooth" }); });
+    if (next) next.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: "smooth" }); });
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    document.addEventListener("carousel:refresh", function () { requestAnimationFrame(update); });
+    track.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); track.scrollBy({ left: step(), behavior: "smooth" }); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); track.scrollBy({ left: -step(), behavior: "smooth" }); }
+    });
+    update();
+  });
 })();
