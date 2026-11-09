@@ -622,7 +622,7 @@ a.tile--paper:hover .emboss__photo img { transform: scale(1.02); }
 
 .offclock { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(36px, 6vw, 104px); align-items: start; }
 .offclock__text { position: sticky; top: calc(var(--header-h) + 32px); }
-.offclock__text h2 { margin: 20px 0 28px; }
+.offclock__text h2 { margin: 0 0 28px; }
 .offclock__text p:not(.label) { font-size: 18.5px; line-height: 1.62; color: var(--ink-soft); max-width: 46ch; }
 .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 22px); }
 .photo-grid figure { margin: 0; }
