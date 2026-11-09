@@ -85,8 +85,21 @@
 
   <main id="main">
     <section class="split split--about">
-      <div class="tile tile--image">
-        <img src="assets/images/site/portrait.jpg" alt="Bella Stryker in a white dress, smiling, against a green hedge" style="object-position:50% 25%;" fetchpriority="high" />
+      <div class="tile tile--sticky">
+        <div class="tile__stick">
+          <video class="tile__bg" autoplay muted loop playsinline preload="auto" poster="assets/images/site/hero-ocean-poster.jpg" aria-hidden="true">
+            <source src="assets/video/hero-ocean-sm.mp4" type="video/mp4" media="(max-width: 900px)" />
+            <source src="assets/video/hero-ocean.mp4" type="video/mp4" />
+          </video>
+          <div class="emboss-card">
+            <div class="emboss">
+              <img class="emboss__art" src="assets/images/site/emboss-frame.webp" alt="" width="1092" height="1362" fetchpriority="high" />
+              <figure class="emboss__photo">
+                <img src="assets/images/site/portrait.jpg" alt="Bella Stryker in a white dress, smiling, against a green hedge" />
+              </figure>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="about-panel">
         <p class="label">A Short (Professional) Biography</p>

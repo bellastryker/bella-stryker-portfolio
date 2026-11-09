@@ -911,3 +911,45 @@ a.tile--paper:hover .emboss__photo img { transform: scale(1.02); }
   .carousel__track.cards { margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); }
   .carousel { --cw: calc(100cqw + 2 * var(--gutter)); }
 }
+
+/* -------- About: framed headshot card floating on the ocean video -------- */
+/* left panel stretches with the bio; its contents stay pinned and centred on screen */
+.split--about .tile--sticky { display: block; min-height: 0; overflow: visible; }
+.tile__stick {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100vh - var(--header-h));
+  height: calc(100svh - var(--header-h));
+  min-height: 520px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+  background: #93a3b5 url("../assets/images/site/hero-ocean-poster.jpg") center / cover;
+}
+.tile__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+.emboss-card {
+  position: relative;
+  isolation: isolate;
+  width: min(62%, 480px, calc((100vh - var(--header-h) - 110px) / 1.23));
+  min-width: 240px;
+  padding: 3.4%;
+  background-color: #f6f3ee;
+  box-shadow: 0 1px 2px rgba(15, 20, 28, .2), 0 14px 24px -12px rgba(15, 20, 28, .35), 0 40px 70px -30px rgba(15, 20, 28, .55);
+}
+.emboss-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: url("../assets/images/site/paper-texture.jpg") 0 0 / 256px 256px;
+  mix-blend-mode: hard-light;
+  opacity: var(--paper-tooth, .4);
+}
+.emboss-card .emboss { width: 100%; min-width: 0; margin: 0; }
+.emboss-card .emboss__photo { z-index: 2; }
+@media (max-width: 900px) {
+  .split--about .tile--sticky { aspect-ratio: auto !important; }
+  .tile__stick { position: relative; top: 0; height: auto; min-height: 0; aspect-ratio: 4 / 4.6; }
+  .emboss-card { width: min(70%, 340px); min-width: 0; }
+  .emboss-card::before { background-size: 200px 200px; opacity: var(--paper-tooth-sm, .3); }
+}
