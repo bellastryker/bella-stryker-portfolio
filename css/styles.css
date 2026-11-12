@@ -529,15 +529,18 @@ a.tile--paper:hover .emboss__photo img { transform: scale(1.02); }
 .index-strip a span { margin-right: 8px; color: var(--ink-mute); }
 .index-strip a:hover { color: var(--ink); }
 
-/* Work page: texture collage behind the whole page, held still while content scrolls over it.
-   --bg-veil is how much paper sits on top of the image (higher = softer). */
-.page-work { --bg-veil: .72; }
-.page-work::before {
-  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+/* Work page: texture collage as a full-bleed hero photo.
+   --veil is how much paper sits over the image (higher = softer); the radial glow keeps the headline legible. */
+.hero-photo {
+  --veil: .4;
   background:
-    linear-gradient(rgba(252, 251, 249, var(--bg-veil)), rgba(252, 251, 249, var(--bg-veil))),
-    url("../assets/images/site/work-bg.jpg") center / cover no-repeat;
+    radial-gradient(ellipse var(--glow-w, 48%) 58% at 50% 50%, rgba(252, 251, 249, .62), rgba(252, 251, 249, 0) 72%),
+    linear-gradient(rgba(252, 251, 249, var(--veil)), rgba(252, 251, 249, var(--veil))),
+    url("../assets/images/site/work-hero.jpg") center / cover no-repeat;
 }
+.hero-photo .page-hero { padding-block: clamp(96px, 12vw, 168px); }
+.hero-photo + .wrap .index-strip { border-top: 0; }
+@media (max-width: 560px) { .hero-photo { --veil: .5; --glow-w: 95%; } }
 
 /* Sub-section heading inside a page (e.g. Coursework on Work) */
 .subhead { text-align: center; padding-block: clamp(72px, 9vw, 128px) clamp(8px, 2vw, 24px); border-bottom: 0; scroll-margin-top: var(--header-h); }
