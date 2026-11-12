@@ -529,6 +529,11 @@ a.tile--paper:hover .emboss__photo img { transform: scale(1.02); }
 .index-strip a span { margin-right: 8px; color: var(--ink-mute); }
 .index-strip a:hover { color: var(--ink); }
 
+/* Sub-section heading inside a page (e.g. Coursework on Work) */
+.subhead { text-align: center; padding-block: clamp(72px, 9vw, 128px) clamp(8px, 2vw, 24px); border-bottom: 0; scroll-margin-top: var(--header-h); }
+.subhead h2 { margin: 24px auto 28px; max-width: 18em; }
+.subhead .lede { max-width: 44ch; margin-inline: auto; }
+
 /* -------- Case studies -------- */
 .case { padding-block: clamp(64px, 8vw, 120px); border-bottom: 1px solid var(--hair); scroll-margin-top: var(--header-h); }
 .case:last-of-type { border-bottom: 0; }

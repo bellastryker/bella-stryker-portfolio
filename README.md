@@ -8,8 +8,8 @@ Static HTML / CSS / vanilla JS — no build step, no framework.
 ```
 bella-stryker-portfolio/
 ├── index.html        # Home
-├── work.html         # Case studies
-├── coursework.html   # Fashion Journalism coursework
+├── work.html         # Case studies + Fashion Journalism coursework (#coursework)
+├── coursework.html   # Redirect stub → work.html#coursework
 ├── about.html        # Biography + off the clock
 ├── contact.html      # Contact
 ├── css/styles.css    # The whole design system
