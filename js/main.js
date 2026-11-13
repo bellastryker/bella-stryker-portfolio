@@ -6,18 +6,6 @@ var store = {
   set: function (k, v) { try { window.sessionStorage.setItem(k, v); } catch (e) {} }
 };
 
-/* Announcement bar — dismiss for the session */
-(function () {
-  var bar = document.querySelector(".announce");
-  if (!bar) return;
-  if (store.get("bs-announce") === "hidden") bar.classList.add("is-hidden");
-  var close = bar.querySelector(".announce__close");
-  if (close) close.addEventListener("click", function () {
-    bar.classList.add("is-hidden");
-    store.set("bs-announce", "hidden");
-  });
-})();
-
 /* Header hairline once the page scrolls */
 (function () {
   var header = document.querySelector(".site-header");
