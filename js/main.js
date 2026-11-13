@@ -118,6 +118,7 @@ var store = {
     var prev = root.querySelector(".carousel__btn--prev");
     var next = root.querySelector(".carousel__btn--next");
     var thumb = root.querySelector(".carousel__progress i");
+    var bar = root.querySelector(".carousel__progress");
     if (!track) return;
     function step() {
       var card = track.querySelector(".card");
@@ -137,6 +138,7 @@ var store = {
         var p = max > 0 ? (x / max) * ((1 - frac) / frac) * 100 : 0;
         thumb.style.setProperty("--pos", p + "%");
       }
+      if (bar) bar.setAttribute("aria-valuenow", max > 0 ? Math.round((x / max) * 100) : 0);
     }
     if (prev) prev.addEventListener("click", function () { track.scrollBy({ left: -step(), behavior: "smooth" }); });
     if (next) next.addEventListener("click", function () { track.scrollBy({ left: step(), behavior: "smooth" }); });
@@ -147,6 +149,62 @@ var store = {
       if (e.key === "ArrowRight") { e.preventDefault(); track.scrollBy({ left: step(), behavior: "smooth" }); }
       if (e.key === "ArrowLeft") { e.preventDefault(); track.scrollBy({ left: -step(), behavior: "smooth" }); }
     });
+
+    /* The progress line doubles as a slider: drag the thumb, or click/drag anywhere on the line */
+    if (bar && thumb) {
+      bar.setAttribute("role", "slider");
+      bar.setAttribute("aria-label", "Scroll through the cards");
+      bar.setAttribute("aria-valuemin", "0");
+      bar.setAttribute("aria-valuemax", "100");
+      bar.tabIndex = 0;
+      var dragging = false, grab = 0;
+      var geom = function () {
+        var r = bar.getBoundingClientRect();
+        var f = track.scrollWidth ? track.clientWidth / track.scrollWidth : 1;
+        return { left: r.left, width: r.width, f: f, travel: (1 - f) * r.width, max: track.scrollWidth - track.clientWidth };
+      };
+      var moveTo = function (clientX) {
+        var g = geom();
+        if (g.travel <= 0) return;
+        var pos = Math.min(Math.max(clientX - g.left - grab, 0), g.travel);
+        track.scrollLeft = (pos / g.travel) * g.max;
+      };
+      var end = function () {
+        if (!dragging) return;
+        dragging = false;
+        root.classList.remove("is-dragging");
+        track.style.scrollSnapType = "";
+        track.style.scrollBehavior = "";
+        var s = step();
+        track.scrollTo({ left: Math.round(track.scrollLeft / s) * s, behavior: "smooth" });
+      };
+      bar.addEventListener("pointerdown", function (e) {
+        if (e.button !== 0) return;
+        var g = geom();
+        var thumbW = g.f * g.width;
+        var thumbLeft = g.max > 0 ? (track.scrollLeft / g.max) * g.travel : 0;
+        var px = e.clientX - g.left;
+        grab = (px >= thumbLeft && px <= thumbLeft + thumbW) ? px - thumbLeft : thumbW / 2;
+        dragging = true;
+        root.classList.add("is-dragging");
+        track.style.scrollSnapType = "none";
+        track.style.scrollBehavior = "auto";
+        if (bar.setPointerCapture) bar.setPointerCapture(e.pointerId);
+        moveTo(e.clientX);
+        e.preventDefault();
+      });
+      bar.addEventListener("pointermove", function (e) { if (dragging) moveTo(e.clientX); });
+      bar.addEventListener("pointerup", end);
+      bar.addEventListener("pointercancel", end);
+      bar.addEventListener("lostpointercapture", end);
+      bar.addEventListener("keydown", function (e) {
+        var k = e.key;
+        if (k === "ArrowRight" || k === "ArrowDown") { e.preventDefault(); track.scrollBy({ left: step(), behavior: "smooth" }); }
+        if (k === "ArrowLeft" || k === "ArrowUp") { e.preventDefault(); track.scrollBy({ left: -step(), behavior: "smooth" }); }
+        if (k === "Home") { e.preventDefault(); track.scrollTo({ left: 0, behavior: "smooth" }); }
+        if (k === "End") { e.preventDefault(); track.scrollTo({ left: track.scrollWidth, behavior: "smooth" }); }
+      });
+    }
     update();
   });
 })();
