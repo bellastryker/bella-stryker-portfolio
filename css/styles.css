@@ -520,6 +520,14 @@ a.tile--paper:hover .emboss__photo img { transform: scale(1.02); }
 .hero-photo + .wrap .index-strip { border-top: 0; }
 @media (max-width: 560px) { .hero-photo { --veil: .5; --glow-w: 95%; } }
 
+/* Home: one-row "at a glance" facts strip */
+.glance-wrap { padding-block: clamp(8px, 2vw, 24px) 0; }
+.glance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px clamp(24px, 4vw, 64px); margin: 0; padding-block: clamp(28px, 3.5vw, 44px); border-block: 1px solid var(--hair); }
+.glance dt { color: var(--ink-mute); }
+.glance dd { margin: 10px 0 0; font-size: 18.5px; line-height: 1.45; color: var(--ink); }
+.glance dd.fine { margin-top: 4px; font-size: 15.5px; color: var(--ink-soft); }
+@media (max-width: 560px) { .glance { grid-template-columns: 1fr; } }
+
 /* Sub-section heading inside a page (e.g. Coursework on Work) */
 .subhead { text-align: center; padding-block: clamp(72px, 9vw, 128px) clamp(8px, 2vw, 24px); border-bottom: 0; scroll-margin-top: var(--header-h); }
 .subhead h2 { margin: 24px auto 28px; max-width: 18em; }
