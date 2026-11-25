@@ -208,3 +208,14 @@ var store = {
     update();
   });
 })();
+
+/* Count résumé opens and downloads in PostHog (event: resume_opened) */
+document.addEventListener("click", function (e) {
+  var a = e.target.closest && e.target.closest('a[href$="resume.pdf"]');
+  if (!a || !window.posthog || typeof window.posthog.capture !== "function") return;
+  window.posthog.capture("resume_opened", {
+    page: location.pathname,
+    link: (a.textContent || "").replace(/\s+/g, " ").trim().slice(0, 40),
+    download: a.hasAttribute("download")
+  }, { send_instantly: true });
+});
